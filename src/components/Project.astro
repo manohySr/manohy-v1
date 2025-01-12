@@ -1,0 +1,54 @@
+---
+const {name, description, technologies} = Astro.props;
+---
+
+
+<div class="container">
+  <span class="project-title">{name}</span>
+  <span class="project-description">{description}</span>
+  <div class="project-techno-container">
+  {
+    technologies.map((t: any) => {
+      return (
+        <div>
+          <span class="project-techno">{t}</span>
+        </div>
+      )
+    })
+  }
+     </div>
+</div>
+
+<style>
+  .container {
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: .5rem;
+
+    background-color: orangered;
+    font-family: sans-serif;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+  }
+
+  .project-description{
+    font-size:  1rem;
+  }
+
+  .project-techno-container {
+    display: flex;
+    gap: .3rem;
+    align-items: end;
+    height: 100%;
+  }
+
+  .project-techno {
+    font-size: .8rem; 
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import Project from "./Project.astro"
+
+const listProjects = [
+  {
+    name: "Nasa Launch System API",
+    description: "Building API using MCVS with NodeJs archi and Writing integration test",
+    technologies: [
+      "NodeJS",
+      "Jest | Supertest",
+      "Github Actions"
+    ],
+    github: "https://github.com/manohySr/NasaTest",
+    live: ""
+  }
+]
+---
+
+<div>
+  {
+  listProjects.length > 0 && listProjects.map(project => {
+  return (
+    <Project name={project.name} description={project.description} technologies={project.technologies} />
+  )
+  })
+  }
+</div>
+
+
