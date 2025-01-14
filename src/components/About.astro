@@ -1,15 +1,9 @@
 ---
-import image from "./../images/profile.png";
-import { Image } from "astro:assets";
-//import puceIcon from "./../assets/icons/puce.svg"; 
-
-const introductionText = "Hi there! Still Manohy here, a passionate software engineer who loves to build things for the web(sometime useless, but still beautifull). Whether it is coding up a storm or crafting a smooth user experience, I am all in. Software is my playground, and I enjoy solving problems one line at a time. Let\'s make something amazing together!"
-
-const softwareJourneyText = "My journey into software engineering began in 2022 when I decided to dive into the world of hackathons @HIU. I joined my school team at @ESPA and I was hooked. I tackled frontend development using React, HTML, and CSS, and the experience ignited my passion for building digital products that matter."
-
-const educationAndExperienceText = "I hold a Master's Degree in Telecommunication Engineering, which gave me a solid foundation in tech and problem-solving. Over the past two years, I have honed my skills as a full-stack developer, working with diverse technologies to create high-quality, user-centric applications."
-
-const currentTechnologiesText = "Lately, I have been diving into a wide range of exciting technologies, and I am always excited to learn more and expand my toolkit. Here's a quick look at what I have ve been working with recently:"
+import Layout from "../layout/Layout.astro"
+import image from "./../images/profile.png"
+import Title from "./../components/Title.astro"
+import { Image } from "astro:assets"
+import puceIcon from "./../assets/icons/puce.svg?raw"
 
 const technologiesList = [
   "JavaScript (ES6+) | Typescript",
@@ -24,41 +18,61 @@ const technologiesList = [
 ]
 
 ---
+<Layout>
+  <div class="no-flex">
+    <Title>1. About</Title>
+  </div>
 
-<div class="container h-5">
-  <div class="description">
-    <span>{introductionText}</span>
-    <span>{softwareJourneyText}</span>
-    <span>{educationAndExperienceText}</span>
-    <span>{currentTechnologiesText}</span>
+  <div class="container h-4">
+    <div class="description">
+      <span>Hi there! Still Manohy here, a passionate software engineer who loves to build things for the web(sometime useless, but still beautifull). Whether it is coding up a storm or crafting a smooth user experience, I am all in. Software is my playground, and I enjoy solving problems one line at a time. Let\'s make something amazing together! <br/>
+      My journey into software engineering began in 2022 when I decided to dive into the world of hackathons <a href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl">@HIU</a>. I joined my school team at <a href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl" target="_blank">@ESPA</a> and I was hooked. I tackled frontend development using React, HTML, and CSS, and the experience ignited my passion for building digital products that matter. <br/>
+      I hold a Master's Degree in Telecommunication Engineering, which gave me a solid foundation in tech and problem-solving. Over the past two years, I have honed my skills as a full-stack developer, working with diverse technologies to create high-quality, user-centric applications. <br/>
+      Lately, I have been diving into a wide range of exciting technologies, and I am always excited to learn more and expand my toolkit. Here's a quick look at what I have ve been working with recently:
+      </span>
 
-    <div class="techno">
-      {technologiesList.map((t) => {
-          return (
-            <ul>
-              <li>
-                {t}
-              </li>
-            </ul>
-            )
-          }
+      <div class="techno">
+        {technologiesList.map((t) => {
+        return (
+        <div>
+          <span class="icon">
+            <Fragment set:html={puceIcon} />
+          </span>
+          <span>
+            {t}
+          </span>
+        </div>
         )
-      }
+        }
+        )
+        }
+      </div>
     </div>
-  </div>
-  <div class="image">
-    <Image src={image} alt="profile" />
-  </div>
-</div> 
+    <div class="image">
+      <Image src={image} alt="profile" />
+    </div>
+  </div> 
+</Layout>
 
 <style>
   .container {
     display: flex;
     gap: 2rem;
-    font-family: sans-serif;
-
-    padding-top: 2rem;
+    justify-content: center;
+    margin-bottom: 10rem;
   }
+
+  @media (max-width: 768px) {
+    .container {
+       flex-direction: column;
+       align-items: center;
+    }
+  }
+
+  .no-flex {
+    align-self: flex-start;
+  }
+
 
   .description {
     display: flex;
@@ -66,16 +80,32 @@ const technologiesList = [
     width: 60%;
   }
 
+  @media (max-width: 768px) {
+    .description {
+      width: 100%;
+    }
+  }
+
   .techno {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 40rem;
+    padding-top: 1rem;
+    gap: 1rem;
   }
 
 
   .image {
     width: 30%;
   }
+  @media (max-width: 768px) {
+    .image {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
 
   .image img{
     width: 18rem;
@@ -89,7 +119,9 @@ const technologiesList = [
     filter: none;
   }
 
-  .h-5 {
-    font-size: 1.1rem;
+  .icon {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
   }
 </style>
