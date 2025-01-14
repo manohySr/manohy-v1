@@ -1,0 +1,24 @@
+---
+
+---
+<div class="email">
+  <div class="line"></div>
+  <div class="text">manohyrajaonah@gmail.com</div>
+</div>
+<style>
+  .email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .text {
+    writing-mode: vertical-rl; /* Makes text vertical */
+    /*transform: rotate(180deg); /* Rotates the text if needed for correct orientation */*/
+    white-space: nowrap; /* Prevents text from wrapping to multiple lines */
+  }
+  .line {
+    height: 8rem;
+    width: 1px;
+    background-color: black;
+  }
+</style>
