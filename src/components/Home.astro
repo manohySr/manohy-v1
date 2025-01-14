@@ -1,71 +1,45 @@
 ---
+import Layout from "./../layout/Layout.astro"
 const name = "Manohy RAJAONAH"
 const title = "I create high-quality digital experiences"
 const description = "I specialize in crafting accessible, user-centered products, with a focus on both system design and development. Bring ideas to life with seamless functionality and intuitive interfaces."
 const fun = "I guess, It's Software Engineering xD"
 ---
-<div class="big-container">
-  <div class="container">
-    <span class="h-3 intro">Hi, my name is </span>
-    <span class="h-1 name">{name}</span>
-    <span class="h-1 title">{title}</span>
-    <div class="h-4 description">
-      <span>{description}</span>
-      <span>{fun}</span>
-    </div>
-    <div class="button">
-      <button>Have an interview with me!</button>
+<Layout>
+  <div class="big-container">
+    <div class="container glass-effect">
+      <span class="h-3 intro">Hi, my name is </span>
+      <span class="h-1 name">{name}</span>
+      <span class="h-1 title">{title}</span>
+      <div class="h-4 description">
+        <span>{description}</span>
+        <span>{fun}</span>
+      </div>
+      <div class="button">
+        <button class="btn-style">Have an interview with me</button>
+      </div>
     </div>
   </div>
-</div>
+</Layout>
 
 <style>
-  body {
-    background-image: url("../assets/background.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 1rem;
-  }
-
   .big-container  {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
     height: 100vh;
   }
 
   .container {
     display: flex;
     flex-direction: column;
-    max-width: 60rem;
-    padding: 5rem;
-    border-radius: .5rem;
-
-    /*TODO: making this transparent like glass */
-    background-color: cornflowerblue;
+ 
   }
-
-  .h-1 {
-    font-size: 3rem;
-  }
-
-  .h-3 {
-    font-size: 1.3rem;
-  }
-
-  .h-4 {
-    font-size: 1.2rem;
-  }
-
-
 
   .intro {
     padding-bottom: 1rem;
   }
-
 
   .name {
     font-weight: bolder;
@@ -82,11 +56,5 @@ const fun = "I guess, It's Software Engineering xD"
   
   .button {
     padding-top: 2rem;
-  }
-
-  /*TODO: making this button cooler*/
-  button {
-    padding: 1rem;
-    cursor: pointer;
   }
 </style>
