@@ -1,9 +1,13 @@
 ---
+import Link from "./../assets/icons/link.svg?raw";
 const {name, description, technologies} = Astro.props;
 ---
 
 
 <div class="container">
+  <div class="link">
+    <Fragment set:html={Link} />
+  </div>
   <span class="project-title">{name}</span>
   <span class="project-description">{description}</span>
   <div class="project-techno-container">
@@ -21,15 +25,21 @@ const {name, description, technologies} = Astro.props;
 
 <style>
   .container {
-    width: 15rem;
-    height: 15rem;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1.6rem;
     border-radius: .5rem;
+    border: 1px solid black;
+    position: relative;
+    cursor: pointer;
+  }
 
-    background-color: orangered;
-    font-family: sans-serif;
+  .link {
+    position: absolute;
+    top: .1rem;
+    right: .2rem;
   }
 
   .project-title {
