@@ -1,7 +1,31 @@
 ---
+import Layout from "../layout/Layout.astro"
 import Project from "./Project.astro"
+import Title from "./Title.astro"
 
 const listProjects = [
+  {
+    name: "Nasa Launch System API",
+    description: "Building API using MCVS with NodeJs archi and Writing integration test",
+    technologies: [
+      "NodeJS",
+      "Jest | Supertest",
+      "Github Actions"
+    ],
+    github: "https://github.com/manohySr/NasaTest",
+    live: ""
+  },
+  {
+    name: "Nasa Launch System API",
+    description: "Building API using MCVS with NodeJs archi and Writing integration test",
+    technologies: [
+      "NodeJS",
+      "Jest | Supertest",
+      "Github Actions"
+    ],
+    github: "https://github.com/manohySr/NasaTest",
+    live: ""
+  },
   {
     name: "Nasa Launch System API",
     description: "Building API using MCVS with NodeJs archi and Writing integration test",
@@ -15,15 +39,26 @@ const listProjects = [
   }
 ]
 ---
-
-<div>
-  {
-  listProjects.length > 0 && listProjects.map(project => {
-  return (
+<Layout class="mt-2">
+  <Title>2. Some Things I've Build</Title>
+  <div class="container">
+    {
+    listProjects.length > 0 && listProjects.map(project => {
+    return (
     <Project name={project.name} description={project.description} technologies={project.technologies} />
-  )
-  })
+    )
+    })
+    }
+  </div>
+</Layout>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
-</div>
+</style>
 
 
