@@ -10,7 +10,7 @@
 }
 
 html {
-  font-size: 14px;
+  font-size: 70%;
   box-sizing: border-box;
   font-family: "Epilogue", sans-serif;
 }
@@ -88,7 +88,3 @@ html {
   background: var(--color);
   color: #fff;
 }
-
-/*.mt-2 {*/
-/*  margin-top: 2rem;*/
-/*}*/
