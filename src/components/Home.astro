@@ -6,7 +6,7 @@ const description = "I specialize in crafting accessible, user-centered products
 const fun = "I guess, It's Software Engineering xD"
 ---
 <Layout>
-  <div class="big-container">
+  <div class="big-container" id="home">
     <div class="container glass-effect">
       <span class="h-3 intro">Hi, my name is </span>
       <span class="h-1 name">{name}</span>
@@ -36,6 +36,12 @@ const fun = "I guess, It's Software Engineering xD"
     flex-direction: column;
  
   }
+  @media (max-width: 768px) {
+  .big-container {
+    padding-bottom: 5rem;
+  }
+}
+
 
   .intro {
     padding-bottom: 1rem;
