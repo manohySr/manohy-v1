@@ -1,10 +1,10 @@
 ---
 import Link from "./../assets/icons/link.svg?raw";
-const {name, description, technologies} = Astro.props;
+const {name, description, technologies, link} = Astro.props;
 ---
 
 
-<div class="container">
+<a href={link} target="_blank" class="container">
   <div class="link">
     <Fragment set:html={Link} />
   </div>
@@ -21,10 +21,12 @@ const {name, description, technologies} = Astro.props;
     })
   }
      </div>
-</div>
+</a>
 
 <style>
   .container {
+    text-decoration: none;
+    color: black;
     width: 20rem;
     height: 20rem;
     display: flex;
