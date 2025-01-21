@@ -30,17 +30,20 @@
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const closeMenuButton = document.querySelector('.close-menu');
   const navLinks = document.querySelector('.nav-links');
+  const links = document.querySelectorAll('li');
 
   function toggleMenu() {
-    navLinks.classList.toggle('active');
-    mobileMenuToggle.classList.toggle('active');
-    closeMenuButton.classList.toggle('active');
+    navLinks?.classList.toggle('active');
+    mobileMenuToggle?.classList.toggle('active');
+    closeMenuButton?.classList.toggle('active');
     document.body.classList.toggle('menu-open');
   }
 
-  mobileMenuToggle.addEventListener('click', toggleMenu);
-  closeMenuButton.addEventListener('click', toggleMenu);
-
+  mobileMenuToggle?.addEventListener('click', toggleMenu);
+  closeMenuButton?.addEventListener('click', toggleMenu);
+  links.forEach(link => {
+    link.addEventListener('click', toggleMenu);
+  })
 </script>
 <style>
   .header {
