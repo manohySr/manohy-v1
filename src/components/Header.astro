@@ -41,16 +41,7 @@
   mobileMenuToggle.addEventListener('click', toggleMenu);
   closeMenuButton.addEventListener('click', toggleMenu);
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (event) => {
-    if (navLinks.classList.contains('active') && 
-        !event.target.closest('.nav-links') && 
-        !event.target.closest('.mobile-menu-toggle')) {
-      toggleMenu();
-    }
-  });
 </script>
-
 <style>
   .header {
     display: flex;
