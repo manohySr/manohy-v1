@@ -1,8 +1,7 @@
 ---
-import Link from "./../assets/icons/link.svg?raw";
-const {name, description, technologies, link} = Astro.props;
+import Link from './../assets/icons/link.svg?raw';
+const { name, description, technologies, link } = Astro.props;
 ---
-
 
 <a href={link} target="_blank" class="container">
   <div class="link">
@@ -11,16 +10,16 @@ const {name, description, technologies, link} = Astro.props;
   <span class="project-title">{name}</span>
   <span class="project-description">{description}</span>
   <div class="project-techno-container">
-  {
-    technologies.map((t: any) => {
-      return (
-        <div>
-          <span class="project-techno">{t}</span>
-        </div>
-      )
-    })
-  }
-     </div>
+    {
+      technologies.map((t: any) => {
+        return (
+          <div>
+            <span class="project-techno">{t}</span>
+          </div>
+        );
+      })
+    }
+  </div>
 </a>
 
 <style>
@@ -32,7 +31,7 @@ const {name, description, technologies, link} = Astro.props;
     display: flex;
     flex-direction: column;
     padding: 1.6rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     border: 1px solid black;
     position: relative;
     cursor: pointer;
@@ -40,8 +39,8 @@ const {name, description, technologies, link} = Astro.props;
 
   .link {
     position: absolute;
-    top: .1rem;
-    right: .2rem;
+    top: 0.1rem;
+    right: 0.2rem;
   }
 
   .project-title {
@@ -49,18 +48,18 @@ const {name, description, technologies, link} = Astro.props;
     padding-bottom: 1rem;
   }
 
-  .project-description{
-    font-size:  1rem;
+  .project-description {
+    font-size: 1rem;
   }
 
   .project-techno-container {
     display: flex;
-    gap: .3rem;
+    gap: 0.3rem;
     align-items: end;
     height: 100%;
   }
 
   .project-techno {
-    font-size: .8rem; 
+    font-size: 0.8rem;
   }
 </style>

@@ -1,23 +1,23 @@
 ---
-import Layout from "../layout/Layout.astro"
-import image from "./../images/profile.png"
-import Title from "./../components/Title.astro"
-import { Image } from "astro:assets"
-import puceIcon from "./../assets/icons/puce.svg?raw"
+import Layout from '../layout/Layout.astro';
+import image from './../images/profile.png';
+import Title from './../components/Title.astro';
+import { Image } from 'astro:assets';
+import puceIcon from './../assets/icons/puce.svg?raw';
 
 const technologiesList = [
-  "JavaScript (ES6+) | Typescript",
-  "React | Vue",
-  "Node.js",
-  "Java | SpringBoot",
-  "Go",
-  "Docker",
-  "Linux | Archlinux (btw)",
-  "Git",
-  "Neovim (btw)"
-]
-
+  'JavaScript (ES6+) | Typescript',
+  'React | Vue',
+  'Node.js',
+  'Java | SpringBoot',
+  'Go',
+  'Docker',
+  'Linux | Archlinux (btw)',
+  'Git',
+  'Neovim (btw)',
+];
 ---
+
 <Layout>
   <div class="no-flex" id="about">
     <Title>__About Me</Title>
@@ -25,30 +25,50 @@ const technologiesList = [
 
   <div class="container h-4">
     <div class="description">
-      <span>Hi there! Still Manohy here, a passionate software engineer who loves to build things for the web(sometime useless, but still beautifull). Whether it is coding up a storm or crafting a smooth user experience, I am all in. Software is my playground, and I enjoy solving problems one line at a time. Let\'s make something amazing together! <br/>
-      My journey into software engineering began in 2022 when I decided to dive into the world of hackathons <a href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl">@HIU</a>. I joined my school team at <a href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl" target="_blank">@ESPA</a> and I was hooked. I tackled frontend development using React, HTML, and CSS, and the experience ignited my passion for building digital products that matter. <br/>
-      I hold a Master's Degree in Telecommunication Engineering, which gave me a solid foundation in tech and problem-solving. Over the past two years, I have honed my skills as a full-stack developer, working with diverse technologies to create high-quality, user-centric applications. <br/>
-      Lately, I have been diving into a wide range of exciting technologies, and I am always excited to learn more and expand my toolkit. Here's a quick look at what I have ve been working with recently:
+      <span
+        >Hi there! Still Manohy here, a passionate software engineer who loves
+        to build things for the web(sometime useless, but still beautifull).
+        Whether it is coding up a storm or crafting a smooth user experience, I
+        am all in. Software is my playground, and I enjoy solving problems one
+        line at a time. Let\'s make something amazing together! <br />
+        My journey into software engineering began in 2022 when I decided to dive
+        into the world of hackathons <a
+          href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
+          >@HIU</a
+        >. I joined my school team at <a
+          href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
+          target="_blank">@ESPA</a
+        > and I was hooked. I tackled frontend development using React, HTML, and
+        CSS, and the experience ignited my passion for building digital products
+        that matter. <br />
+        I hold a Master's Degree in Telecommunication Engineering, which gave me
+        a solid foundation in tech and problem-solving. Over the past two years,
+        I have honed my skills as a full-stack developer, working with diverse technologies
+        to create high-quality, user-centric applications. <br />
+        Lately, I have been diving into a wide range of exciting technologies, and
+        I am always excited to learn more and expand my toolkit. Here's a quick look
+        at what I have ve been working with recently:
       </span>
 
       <div class="techno">
-        {technologiesList.map((t) => {
-        return (
-        <div>
-          <span class="icon">
-            <Fragment set:html={puceIcon} />
-          </span>
-          <span>
-            {t}
-          </span>
-        </div>
-      )})}
+        {
+          technologiesList.map((t) => {
+            return (
+              <div>
+                <span class="icon">
+                  <Fragment set:html={puceIcon} />
+                </span>
+                <span>{t}</span>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
     <div class="image">
       <Image src={image} alt="profile" />
     </div>
-  </div> 
+  </div>
 </Layout>
 
 <style>
@@ -61,15 +81,14 @@ const technologiesList = [
 
   @media (max-width: 768px) {
     .container {
-       flex-direction: column;
-       align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
   .no-flex {
     align-self: flex-start;
   }
-
 
   .description {
     display: flex;
@@ -97,8 +116,6 @@ const technologiesList = [
     }
   }
 
-
-
   .image {
     width: 30%;
   }
@@ -110,11 +127,10 @@ const technologiesList = [
     }
   }
 
-
-  .image img{
+  .image img {
     width: 18rem;
     height: auto;
-    border-radius: .2rem;
+    border-radius: 0.2rem;
     filter: grayscale(100%);
     transition: filter 0.3s ease-in-out;
   }
