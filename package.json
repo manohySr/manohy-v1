@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write src/components/Email.astro --loglevel silent"
+    "format": "prettier --write \"**/*.astro\" --log-level silent"
   },
   "dependencies": {
     "astro": "^5.1.1",
