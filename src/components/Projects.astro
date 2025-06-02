@@ -2,33 +2,57 @@
 import Layout from '../layout/Layout.astro';
 import Project from './Project.astro';
 import Title from './Title.astro';
-import { projects as listProjects} from '../data';
+import { projects } from '../data';
+
+// Group projects by category (you can add categories to your Project type if needed)
+const featuredProjects = projects.slice(0, 3);
+const otherProjects = projects.slice(3);
 ---
 
 <Layout class="mt-2">
-  <Title>__Things I've Build</Title>
+  <Title>__Featured Projects</Title>
   <div class="container" id="projects">
     {
-      listProjects.length > 0 &&
-        listProjects.map((project) => {
-          return (
-            <Project
-              name={project.name}
-              description={project.description}
-              technologies={project.technologies}
-              link={project.live ? project.live : project.github}
-            />
-          );
-        })
+      featuredProjects.map((project) => (
+        <Project project={project} />
+      ))
     }
   </div>
+
+  {
+    otherProjects.length > 0 && (
+      <>
+        <Title>__Other Projects</Title>
+        <div class="container other-projects">
+          {
+            otherProjects.map((project) => (
+              <Project project={project} />
+            ))
+          }
+        </div>
+      </>
+    )
+  }
 </Layout>
 
 <style>
   .container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .other-projects {
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
   }
 </style>
