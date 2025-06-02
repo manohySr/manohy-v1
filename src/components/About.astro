@@ -4,18 +4,7 @@ import image from './../images/profile.png';
 import Title from './../components/Title.astro';
 import { Image } from 'astro:assets';
 import puceIcon from './../assets/icons/puce.svg?raw';
-
-const technologiesList = [
-  'JavaScript (ES6+) | Typescript',
-  'React | Vue',
-  'Node.js',
-  'Java | SpringBoot',
-  'Go',
-  'Docker',
-  'Linux | Archlinux (btw)',
-  'Git',
-  'Neovim (btw)',
-];
+import { technologies } from '../data';
 ---
 
 <Layout>
@@ -52,16 +41,14 @@ const technologiesList = [
 
       <div class="techno">
         {
-          technologiesList.map((t) => {
-            return (
-              <div>
-                <span class="icon">
-                  <Fragment set:html={puceIcon} />
-                </span>
-                <span>{t}</span>
-              </div>
-            );
-          })
+          technologies.map((tech) => (
+            <div>
+              <span class="icon">
+                <Fragment set:html={puceIcon} />
+              </span>
+              <span>{tech.name}</span>
+            </div>
+          ))
         }
       </div>
     </div>
