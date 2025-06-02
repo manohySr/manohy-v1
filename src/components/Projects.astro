@@ -5,8 +5,7 @@ import Title from './Title.astro';
 import { projects } from '../data';
 
 // Group projects by category (you can add categories to your Project type if needed)
-const featuredProjects = projects.slice(0, 3);
-const otherProjects = projects.slice(3);
+const featuredProjects = projects;
 ---
 
 <Layout class="mt-2">
@@ -18,21 +17,6 @@ const otherProjects = projects.slice(3);
       ))
     }
   </div>
-
-  {
-    otherProjects.length > 0 && (
-      <>
-        <Title>__Other Projects</Title>
-        <div class="container other-projects">
-          {
-            otherProjects.map((project) => (
-              <Project project={project} />
-            ))
-          }
-        </div>
-      </>
-    )
-  }
 </Layout>
 
 <style>
