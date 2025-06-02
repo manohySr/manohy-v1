@@ -14,31 +14,20 @@ import { technologies } from '../data';
 
   <div class="container h-4">
     <div class="description">
-      <span
-        >Hi there! Still Manohy here, a passionate software engineer who loves
-        to build things for the web(sometime useless, but still beautifull).
-        Whether it is coding up a storm or crafting a smooth user experience, I
-        am all in. Software is my playground, and I enjoy solving problems one
-        line at a time. Let\'s make something amazing together! <br />
-        My love of software engineering began in 2022 when I decided to dive
-        into the world of hackathons <a
-          href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
-          >@HIU</a
-        >. I joined my school team at <a
-          href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
-          target="_blank">@ESPA</a
-        > and I was hooked. I tackled frontend development using React, HTML, and
-        CSS, and the experience ignited my passion for building digital products
-        that matter. <br />
-        I hold a Master's Degree in Telecommunication Engineering, which gave me
-        a solid foundation in tech and problem-solving. Over the past two years,
-        I have honed my skills as a full-stack developer, working with diverse technologies
-        to create high-quality, user-centric applications. <br />
-        Lately, I have been diving into a wide range of exciting technologies, and
-        I am always excited to learn more and expand my toolkit. Here's a quick look
-        at what I have ve been working with recently:
-      </span>
+      <span>
+      Hey there, still Manohy here — a curious and creative software engineer who loves building for the web. I enjoy crafting clean user experiences and solving problems one line at a time. <br /><br />
+    
+      My journey began in 2022 during a 
+      <a href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl" target="_blank">Malagasy Inter-university Hackathon @HIU with my school @ESPA</a>,
+      where I discovered my love of engineering. I used React, HTML, and CSS as an UI developer during the time. <br /><br />
+    
+      Since then, I’ve grown into a full-stack developer with a Master’s in Telecommunication Engineering, building real-world applications with modern tools and frameworks. <br /><br />
+    
+      Lately, I’ve been exploring the world of AI and Machine Learning. <span class="fun-text">Always building, always learning.</span><br /><br />
 
+      Here's a quick look at what I have ve been working with recently:
+      </span>
+      <br /><br />
       <div class="techno">
         {
           technologies.map((tech) => (
@@ -132,5 +121,10 @@ import { technologies } from '../data';
     display: inline-block;
     width: 1rem;
     height: 1rem;
+  }
+
+  .fun-text {
+    font-style: italic;
+    color: #444;
   }
 </style>
