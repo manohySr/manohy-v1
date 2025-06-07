@@ -38,7 +38,13 @@ export const projects: Project[] = [
     technologies: ['Python', 'Typer', 'Rich', 'Github API'],
     github: 'https://github.com/manohySr/github-activity',
   },
-  
+  {
+    name: '🌧️ Weather API',
+    description:
+      'A weather API wrapper service that fetches weather data from Visual Crossing API with Redis caching support. This project demonstrates working with third-party APIs, implementing caching, and handling environment variables.',
+    technologies: ['Go', 'Go Fiber', 'Redis cache', 'Docker'],
+    github: 'https://github.com/manohySr/weather-api',
+  },
 ];
 
 export const technologies: Technology[] = [
@@ -52,4 +58,4 @@ export const technologies: Technology[] = [
   { name: 'Linux | Shell', category: 'OS' },
   { name: 'Git', category: 'Version Control' },
   { name: 'Neovim | Cursor', category: 'Editor' },
-]; 
+];
