@@ -45,6 +45,13 @@ export const projects: Project[] = [
     technologies: ['Go', 'Go Fiber', 'Redis cache', 'Docker'],
     github: 'https://github.com/manohySr/weather-api',
   },
+  {
+    name: '☁️ Caching Proxy Server',
+    description:
+      'A lightweight caching proxy server written in Go that speeds up responses by caching requested content by using a CLI command with support for TTL, configurable port and origin. It includes cache status headers, response time tracking, and handles both query and path parameters.',
+    technologies: ['Go', 'Go Cobra', 'Caching'],
+    github: 'https://github.com/manohySr/caching-proxy',
+  },
 ];
 
 export const technologies: Technology[] = [
