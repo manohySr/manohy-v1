@@ -28,18 +28,16 @@ import { technologies } from '../data';
       Here's a quick look at what I have ve been working with recently:
       </span>
       <br /><br />
-      <div class="techno">
-        {
-          technologies.map((tech) => (
-            <div>
-              <span class="icon">
-                <Fragment set:html={puceIcon} />
-              </span>
-              <span>{tech.name}</span>
-            </div>
-          ))
-        }
-      </div>
+     <div class="techno">
+  {technologies.map((tech) => (
+    <div class="tech-item">
+      <span class="icon">
+        <img src={tech.icon} alt={`${tech.name} logo`} width="24" height="24" />
+      </span>
+      <span>{tech.name}</span>
+    </div>
+  ))}
+</div>
     </div>
     <div class="image">
       <Image src={image} alt="profile" />
@@ -48,83 +46,99 @@ import { technologies } from '../data';
 </Layout>
 
 <style>
+ .container {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  margin-bottom: 10rem;
+}
+
+@media (max-width: 768px) {
   .container {
-    display: flex;
-    gap: 5rem;
-    justify-content: center;
-    margin-bottom: 10rem;
-  }
-
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  .no-flex {
-    align-self: flex-start;
-  }
-
-  .description {
-    color: #111;
-    display: flex;
     flex-direction: column;
-    width: 60%;
+    align-items: center;
   }
+}
 
-  @media (max-width: 768px) {
-    .description {
-      width: 100%;
-    }
+.no-flex {
+  align-self: flex-start;
+}
+
+.description {
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  .description {
+    width: 100%;
   }
+}
 
+.techno {
+  color: #111;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 40rem;
+  padding-top: 3rem;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
   .techno {
-    color: #111;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 40rem;
-    padding-top: 1rem;
-    gap: 1rem;
+    width: 100%;
+    grid-template-columns: 1fr;
   }
-  @media (max-width: 768px) {
-    .techno {
-      width: 100%;
-      grid-template-columns: 1fr;
-    }
-  }
+}
 
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* small gap between icon and name */
+}
+
+.tech-item .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.tech-item .icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.image {
+  width: 30%;
+}
+
+@media (max-width: 768px) {
   .image {
-    width: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
-  @media (max-width: 768px) {
-    .image {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  }
+}
 
-  .image img {
-    width: 18rem;
-    height: auto;
-    border-radius: 0.2rem;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease-in-out;
-  }
+.image img {
+  width: 18rem;
+  height: auto;
+  border-radius: 0.2rem;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-in-out;
+}
 
-  .image img:hover {
-    filter: none;
-  }
+.image img:hover {
+  filter: none;
+}
 
-  .icon {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .fun-text {
-    font-style: italic;
-    color: #444;
-  }
+.fun-text {
+  font-style: italic;
+  color: #444;
+}
 </style>
