@@ -31,10 +31,12 @@ import { technologies } from '../data';
      <div class="techno">
   {technologies.map((tech) => (
     <div class="tech-item">
-      <span class="icon">
-        <img src={tech.icon} alt={`${tech.name} logo`} width="24" height="24" />
-      </span>
-      <span>{tech.name}</span>
+      <!--<span class="icon">-->
+      <!--  <img src={tech.icon} alt={`${tech.name} logo`} width="24" height="24" />-->
+      <!--</span>-->
+
+      
+      <span>≫ {tech.name}</span>
     </div>
   ))}
 </div>
