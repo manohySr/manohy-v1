@@ -1,4 +1,16 @@
 import type { Project, Technology } from '../types';
+import absenceImg from '../images/absence.png';
+
+export const bigProjects: Project[] = [
+  {
+    name: 'Employee Attendance System',
+    description:
+      'A comprehensive employee attendance tracking system with real-time monitoring, absence management, and detailed reporting. Features a clean dashboard interface with color-coded status indicators.',
+    technologies: ['Vuejs', 'Nuxt', 'Vuetify', 'Virtual Scrolling'],
+    github: 'https://github.com/manohySr/entreprise-absence-notfaroff',
+    image: absenceImg,
+  },
+];
 
 export const projects: Project[] = [
   {

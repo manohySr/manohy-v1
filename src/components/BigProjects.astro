@@ -1,0 +1,37 @@
+---
+import Layout from '../layout/Layout.astro';
+import BigProject from './BigProject.astro';
+import Title from './Title.astro';
+import { bigProjects } from '../data';
+---
+
+<Layout class="mt-2">
+  <Title>__Featured Projects</Title>
+  <div class="big-projects-container" id="featured-projects">
+    {
+      bigProjects.map((project, index) => (
+        <BigProject project={project} index={index} />
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .big-projects-container {
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1200px) {
+    .big-projects-container {
+      padding: 2rem 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .big-projects-container {
+      padding: 1.5rem 1rem;
+    }
+  }
+</style>

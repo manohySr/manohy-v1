@@ -5,10 +5,11 @@ export interface Project {
   github: string;
   live?: string;
   link?: string;
+  image?: string | any;
 }
 
 export interface Technology {
   name: string;
   category: string;
   icon: string;
-} 
+}
