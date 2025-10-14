@@ -10,12 +10,11 @@ const { project } = Astro.props;
 const { name, description, technologies, ...link } = project;
 
 let linkToProject = link.live ? link.live : link.github;
-
 ---
 
-<a 
-  href={linkToProject} 
-  target="_blank" 
+<a
+  href={linkToProject}
+  target="_blank"
   rel="noopener noreferrer"
   class="container"
   aria-label={`View project: ${name}`}
