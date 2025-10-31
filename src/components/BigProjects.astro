@@ -6,14 +6,20 @@ import { bigProjects } from '../data';
 ---
 
 <Layout class="mt-2">
+  {
+  bigProjects.length > 0 && (
+
   <Title>__Featured Projects</Title>
   <div class="big-projects-container" id="featured-projects">
     {
-      bigProjects.map((project, index) => (
-        <BigProject project={project} index={index} />
-      ))
+    bigProjects.map((project, index) => (
+    <BigProject project={project} index={index} />
+    ))
     }
   </div>
+
+  )
+}
 </Layout>
 
 <style>
