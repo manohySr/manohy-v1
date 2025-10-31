@@ -1,3 +1,5 @@
+export type ProjectCategory = 'fullstack' | 'backend' | 'frontend';
+
 export interface Project {
   name: string;
   description: string;
@@ -6,6 +8,7 @@ export interface Project {
   live?: string;
   link?: string;
   image?: string | any;
+  category?: ProjectCategory;
 }
 
 export interface Technology {

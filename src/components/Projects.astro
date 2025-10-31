@@ -2,16 +2,28 @@
 import Layout from '../layout/Layout.astro';
 import Project from './Project.astro';
 import Title from './Title.astro';
+import FilterTabs from './FilterTabs.astro';
 import { projects } from '../data';
 
-// Group projects by category (you can add categories to your Project type if needed)
-const featuredProjects = projects;
+// Get filter from URL
+const url = new URL(Astro.request.url);
+const filter = url.searchParams.get('filter') || 'all';
+
+// Filter projects based on category
+const filteredProjects = filter === 'all'
+  ? projects
+  : projects.filter(p => p.category === filter);
 ---
 
 <Layout class="mt-2">
   <Title>__Other worthy projects</Title>
+  <FilterTabs activeCategory={filter} />
   <div class="container" id="projects">
-    {featuredProjects.map((project) => <Project project={project} />)}
+    {filteredProjects.map((project) => (
+      <div data-category={project.category || 'frontend'}>
+        <Project project={project} />
+      </div>
+    ))}
   </div>
 </Layout>
 

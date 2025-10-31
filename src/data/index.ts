@@ -22,6 +22,7 @@ export const projects: Project[] = [
       'Built an API for Nasa Launch System using Node.js with MVC architecture, writing integration tests with Jest and Supertest, and automating workflows with GitHub Actions.',
     technologies: ['Node.js', 'Jest', 'Mongoose', 'GitHubActions'],
     github: 'https://github.com/manohySr/NasaTest',
+    category: 'fullstack',
   },
   {
     name: 'Cat Wiki Master',
@@ -30,6 +31,7 @@ export const projects: Project[] = [
     technologies: ['Next.js 14', 'TypeScript', 'Tailwind', 'MongoDb'],
     github: 'https://github.com/manohySr/cat-wiki-master',
     live: 'https://cat-wiki-master-seven.vercel.app',
+    category: 'fullstack',
   },
   {
     name: 'Kotrana CSS Part 3',
@@ -38,6 +40,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'Sass', 'SVG', 'BEM'],
     github: 'https://github.com/manohySr/kotrana-css-part-3',
     live: 'https://kotrana-part-3.netlify.app',
+    category: 'frontend',
   },
   {
     name: 'TMDB CLI Tool',
@@ -45,6 +48,7 @@ export const projects: Project[] = [
       'A beautiful command-line interface tool to fetch and display movie information from The Movie Database (TMDB) API.',
     technologies: ['Golang', 'Go Cobra', 'TMDB API'],
     github: 'https://github.com/manohySr/tmdb-app',
+    category: 'backend',
   },
   {
     name: 'GitHub Activity CLI',
@@ -52,6 +56,7 @@ export const projects: Project[] = [
       'A command-line tool to track and analyze GitHub activity. Fetch the recent activity of a GitHub user and display it in the terminal.',
     technologies: ['Python', 'Typer', 'Rich', 'Github API'],
     github: 'https://github.com/manohySr/github-activity',
+    category: 'backend',
   },
   {
     name: 'Weather API',
@@ -59,6 +64,7 @@ export const projects: Project[] = [
       'A weather API wrapper service that fetches weather data from Visual Crossing API with Redis caching support. This project demonstrates working with third-party APIs, implementing caching, and handling environment variables.',
     technologies: ['Go', 'Go Fiber', 'Redis cache', 'Docker'],
     github: 'https://github.com/manohySr/weather-api',
+    category: 'backend',
   },
   {
     name: 'Caching Proxy Server',
@@ -66,6 +72,7 @@ export const projects: Project[] = [
       'A lightweight caching proxy server written in Go that speeds up responses by caching requested content by using a CLI command with support for TTL, configurable port and origin. It includes cache status headers, response time tracking, and handles both query and path parameters.',
     technologies: ['Go', 'Go Cobra', 'Caching'],
     github: 'https://github.com/manohySr/caching-proxy',
+    category: 'backend',
   },
   {
     name: 'Snap Landing Page',
@@ -74,6 +81,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/manohySr/Front-end-mentor-part-4',
     live: 'https://front-end-mentor-part-4.netlify.app',
+    category: 'frontend',
   },
   {
     name: 'Notifications Page',
@@ -82,6 +90,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/manohySr/Front-end-mentor-part-3',
     live: 'https://front-end-mentor-part-3.netlify.app',
+    category: 'frontend',
   },
   {
     name: 'Newsletter Subscription',
@@ -90,6 +99,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/manohySr/Front-end-mentor-part-2',
     live: 'https://front-end-mentor-part-2.netlify.app',
+    category: 'frontend',
   },
   {
     name: 'QR Code Component',
@@ -98,6 +108,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS'],
     github: 'https://github.com/manohySr/Front-end-mentor-part-1',
     live: 'https://front-end-mentor-part-1.netlify.app',
+    category: 'frontend',
   },
   {
     name: 'Image Uploader',
@@ -106,6 +117,7 @@ export const projects: Project[] = [
     technologies: ['React', 'Vite', 'Cloudinary', 'Node.js'],
     github: 'https://github.com/manohySr/image-uploader-front',
     live: 'https://image-uploader-front-six.vercel.app',
+    category: 'fullstack',
   },
   {
     name: 'Pizza Order',
@@ -115,6 +127,7 @@ export const projects: Project[] = [
     live: 'https://pizza-manohy.netlify.app/',
     github:
       'https://github.com/manohySr/Road-to-expert-React-step-1-again---pizza-RTER-',
+    category: 'frontend',
   },
 ];
 

@@ -1,0 +1,149 @@
+---
+interface Props {
+  activeCategory?: string;
+}
+
+const { activeCategory = 'all' } = Astro.props;
+
+
+import { projects } from '../data';
+
+const allProjectsCount = projects.length
+const backendCount = projects.filter(p => p.category === 'backend').length;
+const fullstackCount = projects.filter(p => p.category === 'fullstack').length;
+const frontendCount = projects.filter(p => p.category === 'frontend').length;
+---
+
+<div class="filter-tabs" data-active={activeCategory}>
+  <button data-filter="all" class="tab" aria-pressed={activeCategory === 'all'}>
+    All <span class="count">({allProjectsCount})</span>
+  </button>
+  <button data-filter="fullstack" class="tab" aria-pressed={activeCategory === 'fullstack'}>
+    Fullstack <span class="count">({fullstackCount})</span>
+  </button>
+  <button data-filter="backend" class="tab" aria-pressed={activeCategory === 'Backend'}>
+    Backend/CLI <span class="count">({backendCount})</span>
+  </button>
+  <button data-filter="frontend" class="tab" aria-pressed={activeCategory === 'frontend'}>
+    Frontend <span class="count">({frontendCount})</span>
+  </button>
+</div>
+
+<style>
+  .filter-tabs {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid #c1c1c153;
+    background: transparent;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-family: inherit;
+  }
+
+  .tab:hover {
+    border-color: #000;
+    color: #000;
+  }
+
+  .tab[aria-pressed="true"] {
+    background: #000;
+    color: white;
+    border-color: #000;
+  }
+
+  .tab .count {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .filter-tabs {
+      padding: 0.25rem;
+    }
+
+    .tab {
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab');
+    const projectsContainer = document.getElementById('projects');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.getAttribute('data-filter');
+
+        // Update active tab
+        tabs.forEach(t => {
+          t.setAttribute('aria-pressed', 'false');
+        });
+        tab.setAttribute('aria-pressed', 'true');
+
+        // Filter projects
+        const projects = projectsContainer?.querySelectorAll('[data-category]');
+
+        projects?.forEach(project => {
+          const category = project.getAttribute('data-category');
+
+          if (filter === 'all' || category === filter) {
+            (project as HTMLElement).style.display = '';
+            (project as HTMLElement).style.animation = 'fadeIn 0.3s ease';
+          } else {
+            (project as HTMLElement).style.display = 'none';
+          }
+        });
+
+        // Update URL without page reload
+        const url = new URL(window.location.href);
+        if (filter === 'all') {
+          url.searchParams.delete('filter');
+        } else {
+          url.searchParams.set('filter', filter);
+        }
+        window.history.pushState({}, '', url.toString());
+      });
+    });
+
+    // Check URL on load
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterParam = urlParams.get('filter');
+
+    if (filterParam) {
+      const targetTab = document.querySelector(`[data-filter="${filterParam}"]`);
+      if (targetTab) {
+        (targetTab as HTMLElement).click();
+      }
+    }
+  });
+</script>
+
+<style is:global>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
