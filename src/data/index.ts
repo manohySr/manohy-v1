@@ -129,6 +129,15 @@ export const projects: Project[] = [
       'https://github.com/manohySr/Road-to-expert-React-step-1-again---pizza-RTER-',
     category: 'frontend',
   },
+  {
+    name: 'Travel List',
+    description:
+      'A simple React project built to refresh my React fundamentals. It lets users create, manage, and check off items to pack for a trip with a clean and intuitive UI.',
+    technologies: ['React', 'Vite', 'CSS'],
+    live: 'https://travel-list-reter.netlify.app/',
+    github: 'https://github.com/manohySr/RTER-part2',
+    category: 'frontend',
+  },
 ];
 
 export const technologies: Technology[] = [

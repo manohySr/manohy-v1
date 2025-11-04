@@ -5,26 +5,39 @@ interface Props {
 
 const { activeCategory = 'all' } = Astro.props;
 
-
 import { projects } from '../data';
 
-const allProjectsCount = projects.length
-const backendCount = projects.filter(p => p.category === 'backend').length;
-const fullstackCount = projects.filter(p => p.category === 'fullstack').length;
-const frontendCount = projects.filter(p => p.category === 'frontend').length;
+const allProjectsCount = projects.length;
+const backendCount = projects.filter((p) => p.category === 'backend').length;
+const fullstackCount = projects.filter(
+  (p) => p.category === 'fullstack',
+).length;
+const frontendCount = projects.filter((p) => p.category === 'frontend').length;
 ---
 
 <div class="filter-tabs" data-active={activeCategory}>
   <button data-filter="all" class="tab" aria-pressed={activeCategory === 'all'}>
     All <span class="count">({allProjectsCount})</span>
   </button>
-  <button data-filter="fullstack" class="tab" aria-pressed={activeCategory === 'fullstack'}>
+  <button
+    data-filter="fullstack"
+    class="tab"
+    aria-pressed={activeCategory === 'fullstack'}
+  >
     Fullstack <span class="count">({fullstackCount})</span>
   </button>
-  <button data-filter="backend" class="tab" aria-pressed={activeCategory === 'Backend'}>
+  <button
+    data-filter="backend"
+    class="tab"
+    aria-pressed={activeCategory === 'Backend'}
+  >
     Backend/CLI <span class="count">({backendCount})</span>
   </button>
-  <button data-filter="frontend" class="tab" aria-pressed={activeCategory === 'frontend'}>
+  <button
+    data-filter="frontend"
+    class="tab"
+    aria-pressed={activeCategory === 'frontend'}
+  >
     Frontend <span class="count">({frontendCount})</span>
   </button>
 </div>
@@ -59,7 +72,7 @@ const frontendCount = projects.filter(p => p.category === 'frontend').length;
     color: #000;
   }
 
-  .tab[aria-pressed="true"] {
+  .tab[aria-pressed='true'] {
     background: #000;
     color: white;
     border-color: #000;
@@ -87,12 +100,12 @@ const frontendCount = projects.filter(p => p.category === 'frontend').length;
     const tabs = document.querySelectorAll('.tab');
     const projectsContainer = document.getElementById('projects');
 
-    tabs.forEach(tab => {
+    tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
         const filter = tab.getAttribute('data-filter');
 
         // Update active tab
-        tabs.forEach(t => {
+        tabs.forEach((t) => {
           t.setAttribute('aria-pressed', 'false');
         });
         tab.setAttribute('aria-pressed', 'true');
@@ -100,7 +113,7 @@ const frontendCount = projects.filter(p => p.category === 'frontend').length;
         // Filter projects
         const projects = projectsContainer?.querySelectorAll('[data-category]');
 
-        projects?.forEach(project => {
+        projects?.forEach((project) => {
           const category = project.getAttribute('data-category');
 
           if (filter === 'all' || category === filter) {
@@ -127,7 +140,9 @@ const frontendCount = projects.filter(p => p.category === 'frontend').length;
     const filterParam = urlParams.get('filter');
 
     if (filterParam) {
-      const targetTab = document.querySelector(`[data-filter="${filterParam}"]`);
+      const targetTab = document.querySelector(
+        `[data-filter="${filterParam}"]`,
+      );
       if (targetTab) {
         (targetTab as HTMLElement).click();
       }

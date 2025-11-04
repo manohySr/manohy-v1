@@ -10,20 +10,21 @@ const url = new URL(Astro.request.url);
 const filter = url.searchParams.get('filter') || 'all';
 
 // Filter projects based on category
-const filteredProjects = filter === 'all'
-  ? projects
-  : projects.filter(p => p.category === filter);
+const filteredProjects =
+  filter === 'all' ? projects : projects.filter((p) => p.category === filter);
 ---
 
 <Layout class="mt-2">
   <Title>__Other worthy projects</Title>
   <FilterTabs activeCategory={filter} />
   <div class="container" id="projects">
-    {filteredProjects.map((project) => (
-      <div data-category={project.category || 'frontend'}>
-        <Project project={project} />
-      </div>
-    ))}
+    {
+      filteredProjects.map((project) => (
+        <div data-category={project.category || 'frontend'}>
+          <Project project={project} />
+        </div>
+      ))
+    }
   </div>
 </Layout>
 
