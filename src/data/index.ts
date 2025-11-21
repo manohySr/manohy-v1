@@ -1,19 +1,28 @@
 import type { Project, Technology } from '../types';
-import absenceImg from '../images/absence.png';
+import ukikiuleImg from '../images/ukikiule.png';
 
-// export const bigProjects: Project[] = [
-//   {
-//     name: 'Employee Attendance System',
-//     description:
-//       'A comprehensive employee attendance tracking system with real-time monitoring, absence management, and detailed reporting. Features a clean dashboard interface with color-coded status indicators.',
-//     technologies: ['Vuejs', 'Nuxt', 'Vuetify', 'Virtual Scrolling'],
-//     github: 'https://github.com/manohySr/entreprise-absence-notfaroff',
-//     image: absenceImg,
-//   },
-// ];
-//
+export const bigProjects: Project[] = [
+  {
+    name: 'UKIKIULE',
+    description:
+      'This project offers AI-powered summaries of Madagascar-related news by leveraging verified data sources, a Retrieval-Augmented Generation (RAG) pipeline for improved accuracy, and integrated voice recognition for hands-free interaction.',
+    technologies: [
+      'NextJs',
+      'Tailwind',
+      'Shadcn',
+      'Python',
+      'FastAPI',
+      'RAG AI',
+      'AWS EC2',
+      'surge.sh',
+    ],
+    github: '#',
+    live: 'https://ukikiule.surge.sh/',
+    image: ukikiuleImg,
+  },
+];
 
-export const bigProjects: Project[] = [];
+// export const bigProjects: Project[] = [];
 
 export const projects: Project[] = [
   {
