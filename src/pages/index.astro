@@ -2,10 +2,18 @@
 import './../styles/global.css';
 import About from '../components/About.astro';
 import Home from '../components/Home.astro';
+import Expertise from '../components/Expertise.astro';
 import Links from '../components/Links.astro';
 import Email from '../components/Email.astro';
 import Header from '../components/Header.astro';
 import BigProjects from '../components/BigProjects.astro';
+
+const seo = {
+  title: 'Manohy RAJAONAH — Full-Stack Software Engineer',
+  description:
+    'Full-stack software engineer building web products, AI integrations, and scalable systems. Open to new opportunities.',
+  url: 'https://manohy.surge.sh',
+};
 ---
 
 <html lang="en">
@@ -13,7 +21,46 @@ import BigProjects from '../components/BigProjects.astro';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manohy RAJAONAH</title>
+
+    <!-- Primary SEO -->
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Manohy RAJAONAH" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={seo.url} />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Manohy RAJAONAH",
+        "jobTitle": "Full-Stack Software Engineer",
+        "email": "manohyrajaonah@gmail.com",
+        "sameAs": [
+          "https://github.com/manohySr",
+          "https://www.linkedin.com/in/manohy-saotra-rajaonah/"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="loader">
@@ -23,11 +70,12 @@ import BigProjects from '../components/BigProjects.astro';
       </div>
     </div>
 
-    <div class="main-content">
+    <main class="main-content">
       <Header />
       <Home />
-      <About />
+      <Expertise />
       <BigProjects />
+      <About />
 
       <div class="link">
         <Links />
@@ -36,22 +84,17 @@ import BigProjects from '../components/BigProjects.astro';
       <div class="email">
         <Email />
       </div>
-    </div>
+    </main>
   </body>
   <script>
-    // Hide the loader once page is fully loaded
     window.addEventListener('load', () => {
       const loader = document.getElementById('loader');
       const mainContent = document.querySelector('.main-content');
-
       if (loader && mainContent) {
-        // Add loaded class to main content
         mainContent.classList.add('loaded');
-
-        // Hide loader after a short delay
         setTimeout(() => {
           loader.classList.add('hidden');
-        }, 500);
+        }, 400);
       }
     });
   </script>
@@ -60,7 +103,7 @@ import BigProjects from '../components/BigProjects.astro';
 <style>
   .main-content {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
   }
 
   .main-content.loaded {
@@ -71,12 +114,14 @@ import BigProjects from '../components/BigProjects.astro';
     position: fixed;
     bottom: 1rem;
     left: 1rem;
+    z-index: 100;
   }
 
   .email {
     position: fixed;
     bottom: 1rem;
     right: 2rem;
+    z-index: 100;
   }
 
   #loader {
@@ -85,7 +130,7 @@ import BigProjects from '../components/BigProjects.astro';
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: white;
+    background: var(--color-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,25 +154,24 @@ import BigProjects from '../components/BigProjects.astro';
   }
 
   .spinner {
-    width: 60px;
-    height: 60px;
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #111;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-border);
+    border-top: 2px solid var(--color-text-primary);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
   }
 
   .loading-text {
-    font-size: 2rem;
-    color: #111;
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
     font-weight: 500;
+    letter-spacing: 0.05em;
+    font-family: var(--font-mono);
   }
 
   @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
+    to {
       transform: rotate(360deg);
     }
   }

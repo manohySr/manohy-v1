@@ -12,7 +12,7 @@
 html {
   font-size: 90%;
   box-sizing: border-box;
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--font-sans);
   scroll-behavior: smooth;
 }
 
@@ -24,37 +24,53 @@ html {
 
 /* Utility Classes */
 :root {
-  --primary-color: transparent;
-  /* Dark background with transparency */
-  --white: rgba(255, 255, 255, 0.8);
-  /* Soft white for text */
-  --black: rgba(0, 0, 0, 0);
-  /* Subtle shadow */
-  --font-family: "Arial", sans-serif;
+  --font-sans: "Epilogue", sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+
+  /* Type scale */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  2rem;
+  --text-4xl:  2.5rem;
+  --text-5xl:  3.5rem;
+
+  /* Colors */
+  --color-text-primary:   #111;
+  --color-text-secondary: #555;
+  --color-text-muted:     #999;
+  --color-border:         #e8e8e8;
+  --color-border-light:   #f0f0f0;
+  --color-bg:             #ffffff;
+  --color-card:           #efefef;
+  --color-icon-bg:        rgba(0, 0, 0, 0.8);
+
   --transition: all 0.3s ease;
 }
 
 .glass-effect {
-  background: var(--primary-color);
+  background: transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px var(--black);
 }
 
 .h-1 {
-  font-size: 3.5rem;
+  font-size: var(--text-5xl);
 }
 
 .h-3 {
-  font-size: 1.3rem;
+  font-size: var(--text-xl);
 }
 
 .h-4 {
-  font-size: 1.2rem;
+  font-size: var(--text-xl);
 }
 
 .h-5 {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
 }
 
 /*utils*/
@@ -63,7 +79,7 @@ html {
   /* border thickness */
   --s: 0.45em;
   /* size of the corner */
-  --color: #373b44;
+  --color: var(--color-text-primary);
 
   text-decoration: none;
   padding: calc(0.8em + var(--s)) calc(1em + var(--s));
@@ -82,7 +98,7 @@ html {
     background-color 0s;
   outline: var(--b) solid #0000;
   outline-offset: 0.6em;
-  font-size: 16px;
+  font-size: 1rem;
 
   border: 0;
 

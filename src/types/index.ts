@@ -16,3 +16,9 @@ export interface Technology {
   category: string;
   icon: string;
 }
+
+export interface Expertise {
+  title: string;
+  description: string;
+  items: string[];
+}

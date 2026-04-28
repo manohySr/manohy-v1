@@ -1,99 +1,254 @@
 ---
-import Layout from './../layout/Layout.astro';
-const name = 'Manohy RAJAONAH';
-const title = 'I create high-quality software solutions';
-const description =
-  'I specialize in crafting accessible, user-centered products, with a focus on both system design and development. Bring ideas to life with seamless functionality and intuitive interfaces.';
-const fun = "I guess, It's Software Engineering xD";
+// Hero renders outside Layout to allow full control of spacing and composition
 ---
 
-<Layout>
-  <div class="big-container" id="home">
-    <div class="container">
-      <span class="intro">Hi, my name is</span>
-      <h1 class="name">{name}</h1>
-      <h2 class="title">{title}</h2>
-      <div class="description">
-        <p>{description}</p>
-        <p class="fun-text">{fun}</p>
+<section class="h-hero" id="home">
+  <div class="h-inner">
+    <div class="h-meta">
+      <span class="h-role">Full-Stack Software Engineer</span>
+      <span class="h-num" aria-hidden="true">01</span>
+    </div>
+
+    <div class="h-headline">
+      <h1 class="h-name">
+        <span class="h-first">Manohy</span>
+        <span class="h-last">RAJAONAH</span>
+      </h1>
+    </div>
+
+    <div class="h-rule" aria-hidden="true"></div>
+
+    <div class="h-content">
+      <div class="h-text">
+        <p class="h-tagline">I create high-quality software solutions.</p>
+        <p class="h-desc">
+          Building accessible, user-centered products — from responsive
+          interfaces to scalable backends and AI-powered systems.
+        </p>
       </div>
-      <div class="button">
-        <a href="https://app.cal.com/manohy-rajaonah" class="btn-style">
-          Have an interview with me
+      <div class="h-actions">
+        <a href="https://app.cal.com/manohy-rajaonah" class="h-btn-solid">
+          Book a call ↗
         </a>
+        <a href="#featured-projects" class="h-btn-link"> View projects → </a>
       </div>
     </div>
+
+    <div class="h-rule" aria-hidden="true"></div>
+
+    <div class="h-footer">
+      <span>From Madagascar(to the star)</span>
+      <span class="h-sep" aria-hidden="true">·</span>
+      <span>Remote-ready</span>
+      <span class="h-sep" aria-hidden="true">·</span>
+      <span>Open to work</span>
+    </div>
   </div>
-</Layout>
+</section>
 
-<style>
-  .big-container {
-    display: flex;
-    /* flex-direction: column;
-    justify-content: center; */
-    align-items: center;
+<style is:global>
+  .h-hero {
     min-height: 100vh;
-    padding: 1rem;
-    /* background: #fafafa; */
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .container {
-    color: #111;
+  .h-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 9rem 4rem 3rem;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    background: white;
-    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); */
+    justify-content: space-between;
+    min-height: 100vh;
+    gap: 0;
   }
 
-  .intro {
-    font-size: 1.2rem;
-    color: #666;
-    font-weight: 500;
-    margin-bottom: 1rem;
+  /* ── Meta row ── */
+  .h-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
   }
 
-  .name {
-    font-size: 3.5rem;
+  .h-role {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .h-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Name ── */
+  .h-headline {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .h-name {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    line-height: 0.95;
+  }
+
+  .h-first {
+    display: block;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    letter-spacing: -0.02em;
+  }
+
+  .h-last {
+    display: block;
+    font-size: clamp(4.5rem, 11vw, 8.5rem);
     font-weight: 800;
-    line-height: 1.1;
-    color: #000;
-    margin: 0 0 1rem 0;
+    color: var(--color-text-primary);
+    letter-spacing: -0.04em;
   }
 
-  .title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #111;
-    margin: 0 0 2rem 0;
+  /* ── Rule ── */
+  .h-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+    margin: 2rem 0;
+    flex-shrink: 0;
   }
 
-  .description {
+  /* ── Content row ── */
+  .h-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 0;
+  }
+
+  .h-text {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 0.75rem;
+    max-width: 36rem;
   }
 
-  .description p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #111;
+  .h-tagline {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .h-desc {
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
     margin: 0;
   }
 
-  .fun-text {
-    font-style: italic;
-    color: #111;
+  /* ── CTAs ── */
+  .h-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-shrink: 0;
   }
 
-  .button {
-    margin-top: 1rem;
+  .h-btn-solid,
+  .h-btn-solid:link,
+  .h-btn-solid:visited {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: var(--color-text-primary);
+    color: white;
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 2px;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
   }
 
+  .h-btn-solid:hover {
+    opacity: 0.72;
+  }
+
+  .h-btn-link,
+  .h-btn-link:link,
+  .h-btn-link:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2px;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .h-btn-link:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-secondary);
+  }
+
+  /* ── Footer ── */
+  .h-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    padding-bottom: 1rem;
+  }
+
+  .h-sep {
+    color: var(--color-border);
+  }
+
+  /* ── Responsive ── */
   @media (max-width: 768px) {
-    .btn-style {
-      font-size: 1rem;
+    .h-inner {
+      padding: 7rem 1.5rem 2rem;
+    }
+
+    .h-last {
+      font-size: clamp(3.5rem, 18vw, 6rem);
+    }
+
+    .h-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .h-actions {
+      align-items: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .h-footer {
+      flex-wrap: wrap;
     }
   }
 </style>

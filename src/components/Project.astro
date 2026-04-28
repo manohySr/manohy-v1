@@ -40,7 +40,7 @@ let linkToProject = link.live ? link.live : link.github;
 <style>
   .container {
     text-decoration: none;
-    color: #000000;
+    color: var(--color-text-primary);
     width: 100%;
     max-width: 400px;
     min-height: 300px;
@@ -48,7 +48,7 @@ let linkToProject = link.live ? link.live : link.github;
     flex-direction: column;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    border: 1px solid #c1c1c153;
+    border: 1px solid var(--color-border);
     position: relative;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.05);
@@ -83,7 +83,7 @@ let linkToProject = link.live ? link.live : link.github;
   }
 
   .container:focus-visible {
-    outline: 2px solid #000000;
+    outline: 2px solid var(--color-text-primary);
     outline-offset: 2px;
   }
 
@@ -112,11 +112,11 @@ let linkToProject = link.live ? link.live : link.github;
     font-size: 1.4rem;
     font-weight: bold;
     margin: 0;
-    color: #000000;
+    color: var(--color-text-primary);
   }
 
   .project-description {
-    color: #444;
+    color: var(--color-text-secondary);
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
@@ -141,7 +141,7 @@ let linkToProject = link.live ? link.live : link.github;
   }
 
   .project-techno:hover {
-    background-color: #000000;
+    background-color: var(--color-text-primary);
     color: white;
   }
 

@@ -1,146 +1,218 @@
 ---
 import Layout from '../layout/Layout.astro';
 import image from './../images/profile.png';
-import Title from './../components/Title.astro';
 import { Image } from 'astro:assets';
-import puceIcon from './../assets/icons/puce.svg?raw';
 import { technologies } from '../data';
 ---
 
 <Layout>
-  <div class="no-flex" id="about">
-    <Title>__About Me</Title>
-  </div>
-
-  <div class="container h-4">
-    <div class="description">
-      <span>
-      Hey there, still Manohy here — a curious and creative software engineer who loves building for the web. I enjoy crafting clean user experiences and solving problems one line at a time. <br /><br />
-    
-      My journey began in 2022 during a 
-      <a href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl" target="_blank">Malagasy Inter-university Hackathon @HIU with my school @ESPA</a>,
-      where I discovered my love of engineering. I used React, HTML, and CSS as an UI developer during the time. <br /><br />
-    
-      Since then, I’ve grown into a full-stack developer with a Master’s in Telecommunication Engineering, building real-world applications with modern tools and frameworks. <br /><br />
-    
-      Lately, I’ve been exploring the world of AI and Machine Learning. <span class="fun-text">Always building, always learning.</span><br /><br />
-
-      Here's a quick look at what I have ve been working with recently:
-      </span>
-      <br /><br />
-     <div class="techno">
-  {technologies.map((tech) => (
-    <div class="tech-item">
-      <!--<span class="icon">-->
-      <!--  <img src={tech.icon} alt={`${tech.name} logo`} width="24" height="24" />-->
-      <!--</span>-->
-
-      
-      <span>≫ {tech.name}</span>
+  <section class="ab-section" id="about">
+    <div class="ab-meta">
+      <h2 class="ab-label">About</h2>
+      <span class="ab-num" aria-hidden="true">04</span>
     </div>
-  ))}
-</div>
+
+    <div class="ab-rule" aria-hidden="true"></div>
+
+    <div class="ab-layout">
+      <div class="ab-left">
+        <div class="ab-bio">
+          <p>Hey — I’m Manohy.</p>
+          <p>
+            I’m a software engineer who enjoys turning ideas into systems people
+            can actually use. What draws me to engineering isn’t just building
+            features, but understanding how things work underneath — and how to
+            make them simpler, faster, and more reliable.
+          </p>
+          <p>
+            I got into development in 2022 during a
+            <a
+              href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Malagasy Inter-university Hackathon @HEI (ESPA)
+            </a>, where I worked on the UI side with React. That experience
+            shaped how I approach building — taking ideas from concept to a
+            working product under real constraints.
+          </p>
+          <p>
+            Since then, I’ve grown into a full-stack developer with a background
+            in Telecommunication Engineering, working across the stack while
+            paying close attention to structure, performance, and
+            maintainability.
+          </p>
+          <p>
+            Lately, I’ve been exploring AI and Machine Learning — not just out
+            of curiosity, but to understand how these systems can be integrated
+            into real-world applications in a meaningful way.
+          </p>
+          <p>
+            I tend to approach problems by breaking them down, questioning
+            assumptions, and iterating quickly. I value clarity over complexity,
+            and I care about building things that last.
+          </p>
+        </div>
+
+        <ul class="ab-tech">
+          {technologies.map((tech) => <li>{tech.name}</li>)}
+        </ul>
+      </div>
+
+      <div class="ab-right">
+        <div class="ab-photo-wrap">
+          <Image
+            src={image}
+            alt="Manohy RAJAONAH"
+            width={400}
+            height={500}
+            class="ab-photo"
+          />
+        </div>
+      </div>
     </div>
-    <div class="image">
-      <Image src={image} alt="profile" />
-    </div>
-  </div>
+  </section>
 </Layout>
 
-<style>
- .container {
-  display: flex;
-  gap: 5rem;
-  justify-content: center;
-  margin-bottom: 10rem;
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
+<style is:global>
+  .ab-section {
+    padding: 6rem 0 8rem;
   }
-}
 
-.no-flex {
-  align-self: flex-start;
-}
-
-.description {
-  color: #111;
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-}
-
-@media (max-width: 768px) {
-  .description {
-    width: 100%;
-  }
-}
-
-.techno {
-  color: #111;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 40rem;
-  padding-top: 3rem;
-  gap: 1rem;
-}
-
-@media (max-width: 768px) {
-  .techno {
-    width: 100%;
-    grid-template-columns: 1fr;
-  }
-}
-
-.tech-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem; /* small gap between icon and name */
-}
-
-.tech-item .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.8rem;
-  height: 1.8rem;
-}
-
-.tech-item .icon img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.image {
-  width: 30%;
-}
-
-@media (max-width: 768px) {
-  .image {
-    width: 100%;
+  /* ── Meta row ── */
+  .ab-meta {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
   }
-}
 
-.image img {
-  width: 18rem;
-  height: auto;
-  border-radius: 0.2rem;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease-in-out;
-}
+  .ab-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    margin: 0;
+  }
 
-.image img:hover {
-  filter: none;
-}
+  .ab-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
 
-.fun-text {
-  font-style: italic;
-  color: #444;
-}
+  /* ── Rule ── */
+  .ab-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+    margin-bottom: 4rem;
+  }
+
+  /* ── Split layout ── */
+  .ab-layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  /* ── Bio text ── */
+  .ab-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .ab-bio p {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .ab-bio em {
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+
+  .ab-bio a,
+  .ab-bio a:link,
+  .ab-bio a:visited {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease;
+  }
+
+  .ab-bio a:hover {
+    border-color: var(--color-text-primary);
+  }
+
+  /* ── Tech list ── */
+  .ab-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ab-tech li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    letter-spacing: 0.03em;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .ab-tech li:hover {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+  }
+
+  /* ── Photo ── */
+  .ab-photo-wrap {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .ab-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+  }
+
+  .ab-photo-wrap:hover .ab-photo {
+    filter: grayscale(0%);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .ab-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .ab-photo-wrap {
+      position: static;
+      max-width: 18rem;
+    }
+
+    .ab-bio p {
+      font-size: var(--text-base);
+    }
+  }
 </style>

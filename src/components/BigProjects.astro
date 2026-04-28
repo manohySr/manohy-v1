@@ -1,39 +1,184 @@
 ---
 import Layout from '../layout/Layout.astro';
 import BigProject from './BigProject.astro';
-import Title from './Title.astro';
 import Archive from './Archive.astro';
 import { bigProjects, projects } from '../data';
 ---
 
-<Layout class="mt-2">
-  {bigProjects.length > 0 && (
-    <Title>__Projects</Title>
-    <div class="big-projects-container" id="featured-projects">
-      {bigProjects.map((project, index) => (
-        <BigProject project={project} index={index} />
-      ))}
+<Layout>
+  <section class="pr-section" id="featured-projects">
+    <div class="pr-meta">
+      <h2 class="pr-label">Projects</h2>
+      <span class="pr-num" aria-hidden="true">03</span>
     </div>
-    <Archive projects={projects} />
-  )}
+
+    <div class="pr-rule" aria-hidden="true"></div>
+
+    <div class="pr-layout">
+      <div class="pr-left">
+        <p class="pr-desc">
+          Here are some works that I am currently working on, or that I made
+          recently.
+        </p>
+        <button class="pr-archive-trigger" type="button">
+          See all projects ↓
+        </button>
+      </div>
+
+      <div class="pr-right">
+        <div class="pr-grid">
+          {
+            bigProjects.map((project, index) => (
+              <BigProject project={project} index={index} />
+            ))
+          }
+        </div>
+
+        <Archive projects={projects} />
+      </div>
+    </div>
+  </section>
 </Layout>
 
-<style>
-  .big-projects-container {
-    padding: 2rem 0;
-    max-width: 1200px;
-    margin: 0 auto;
+<script>
+  const trigger = document.querySelector('.pr-archive-trigger');
+  const toggle = document.querySelector('.ar-toggle');
+
+  trigger?.addEventListener('click', () => {
+    const isExpanded = toggle?.getAttribute('aria-expanded') === 'true';
+    if (!isExpanded) {
+      (toggle as HTMLButtonElement)?.click();
+    }
+    document
+      .querySelector('#ar-table')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+<style is:global>
+  .pr-section {
+    padding: 6rem 0 8rem;
   }
 
-  @media (max-width: 1200px) {
-    .big-projects-container {
-      padding: 2rem 1rem;
+  /* ── Meta row ── */
+  .pr-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .pr-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .pr-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Rule ── */
+  .pr-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+    margin-bottom: 4rem;
+  }
+
+  /* ── Split layout ── */
+  .pr-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ── Left column ── */
+  .pr-left {
+    position: sticky;
+    top: 7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .pr-desc {
+    font-size: var(--text-xl);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .pr-archive-trigger,
+  .pr-archive-trigger:link,
+  .pr-archive-trigger:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0 0 2px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    width: fit-content;
+    transition: border-color 0.2s ease;
+  }
+
+  .pr-archive-trigger:hover {
+    border-color: var(--color-text-primary);
+  }
+
+  /* ── Right column ── */
+  .pr-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Project grid ── */
+  .pr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  .pr-grid > .bp-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .pr-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .pr-left {
+      position: static;
     }
   }
 
   @media (max-width: 768px) {
-    .big-projects-container {
-      padding: 1.5rem 1rem;
+    .pr-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pr-grid > .bp-card:last-child:nth-child(odd) {
+      grid-column: auto;
     }
   }
 </style>

@@ -11,11 +11,12 @@ interface Props {
 
 const { project, index } = Astro.props;
 const { name, description, technologies, github, live, image } = project;
-const isEven = index % 2 === 0;
+const num = String(index + 1).padStart(2, '0');
 ---
 
-<div class={`big-project-container ${isEven ? '' : 'reverse'}`}>
-  <div class="project-image">
+<article class="bp-card">
+
+  <div class="bp-image">
     <a href={live || github} target="_blank" rel="noopener noreferrer">
       {
         image ? (
@@ -28,246 +29,224 @@ const isEven = index % 2 === 0;
             quality={90}
           />
         ) : (
-          <img
-            src="https://via.placeholder.com/800x600"
-            alt={`${name} screenshot`}
-          />
+          <div class="bp-placeholder"></div>
         )
       }
     </a>
   </div>
 
-  <div class="project-content">
-    <h5 class="project-overline">Featured Project</h5>
-    <h3 class="project-title">
+  <div class="bp-content">
+    <div class="bp-header">
+      <span class="bp-num">{num}</span>
+      <span class="bp-sep" aria-hidden="true">·</span>
+      <span class="bp-overline">Featured Project</span>
+    </div>
+
+    <h3 class="bp-title">
       <a href={live || github} target="_blank" rel="noopener noreferrer">
         {name}
       </a>
     </h3>
 
-    <div class="project-description">
-      <p>{description}</p>
-    </div>
+    <p class="bp-desc">{description}</p>
 
-    <ul class="project-tech-list">
+    <ul class="bp-tech">
       {technologies.map((tech) => <li>{tech}</li>)}
     </ul>
+
+    <div class="bp-links">
+      {github && github !== '#' && (
+        <a
+          href={github}
+          class="bp-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${name} on GitHub`}
+        >
+          <Fragment set:html={Github} />
+        </a>
+      )}
+      {live && (
+        <a
+          href={live}
+          class="bp-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${name} live site`}
+        >
+          <Fragment set:html={Link} />
+        </a>
+      )}
+    </div>
   </div>
-</div>
 
-<style>
-  .big-project-container {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 4rem;
-    align-items: center;
-    margin-bottom: 3rem;
-    position: relative;
-    padding: 2rem 0;
+</article>
+
+<style is:global>
+  .bp-card {
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s ease;
   }
 
-  .big-project-container.reverse {
-    direction: rtl;
+  .bp-card:hover {
+    background: var(--color-card);
   }
 
-  .big-project-container.reverse .project-content {
-    direction: ltr;
-  }
-
-  .big-project-container.reverse .project-description {
-    text-align: left;
-  }
-
-  .project-image {
-    position: relative;
-    z-index: 1;
-    border-radius: 0.75rem;
-    overflow: hidden; /* ensures rounded corners clip image */
+  /* ── Image ── */
+  .bp-image {
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
     filter: grayscale(100%);
+    transition: filter 0.4s ease;
   }
 
-  .project-image:hover {
+  .bp-card:hover .bp-image {
     filter: grayscale(0%);
   }
 
-  .project-image a {
+  .bp-image a {
     display: block;
+    height: 100%;
+  }
+
+  .bp-image img {
     width: 100%;
     height: 100%;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .project-image a img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* ensures image covers container */
-    display: block;
-  }
-
-  .project-image:hover::before {
-    opacity: 0.4;
-  }
-
-  .project-image img {
-    width: 100%;
-    height: auto;
-    display: block;
     object-fit: cover;
-    border-radius: 0.5rem;
-    transition: transform 0.3s ease;
+    display: block;
+    transition: transform 0.4s ease;
   }
 
-  .project-image:hover img {
-    transform: scale(1.02);
+  .bp-card:hover .bp-image img {
+    transform: scale(1.03);
   }
 
-  .project-overline {
-    margin: 0 1rem 1rem 0;
-    color: #64b5f6;
-    font-family: monospace;
-    font-size: 0.875rem;
-    font-weight: 400;
+  .bp-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--color-card);
+  }
+
+  /* ── Content ── */
+  .bp-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .bp-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .bp-num,
+  .bp-sep,
+  .bp-overline {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .bp-overline {
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
 
-  .project-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  .project-title {
-    color: #1a1a1a;
-    font-size: 1.4rem;
-    margin: 0 0 1.5rem;
+  .bp-title {
+    font-size: var(--text-xl);
     font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
   }
 
-  .project-title a {
-    text-decoration: none;
+  .bp-title a,
+  .bp-title a:link,
+  .bp-title a:visited {
     color: inherit;
-    transition: color 0.25s ease;
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
-  .project-title a:hover {
-    color: #64b5f6;
+  .bp-title a:hover {
+    color: var(--color-text-secondary);
   }
 
-  .project-description {
-    position: relative;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+  .bp-desc {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
   }
 
-  .project-description p {
-    color: #64748b;
-    font-size: 1.125rem;
-    line-height: 1.8;
+  /* ── Tech pills ── */
+  .bp-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
     margin: 0;
   }
 
-  .project-tech-list {
+  .bp-tech li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    letter-spacing: 0.03em;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .bp-tech li:hover {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+  }
+
+  /* ── Links ── */
+  .bp-links {
     display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 2;
-    margin: 0 0 1.5rem 0;
-    padding: 0;
-    list-style: none;
-    gap: 0.75rem;
-  }
-
-  .project-tech-list li {
-    font-family: monospace;
-    font-size: 0.875rem;
-    padding: 0.25rem 0.75rem;
-    background: rgba(100, 181, 246, 0.1);
-    border: 1px solid rgba(100, 181, 246, 0.2);
-    border-radius: 0.25rem;
-    color: #64748b;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-  }
-
-  .project-tech-list li:hover {
-    background: rgba(100, 181, 246, 0.2);
-    border-color: #64b5f6;
-    color: #64b5f6;
-  }
-
-  .project-links {
-    display: flex;
-    align-items: center;
-    position: relative;
     gap: 1rem;
+    align-items: center;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
   }
 
-  .project-links a {
+  .bp-link,
+  .bp-link:link,
+  .bp-link:visited {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem;
-    color: #64748b;
-    background: rgba(100, 181, 246, 0.05);
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
-  .project-links a:hover {
-    color: #64b5f6;
-    background: rgba(100, 181, 246, 0.15);
-    transform: translateY(-2px);
+  .bp-link:hover {
+    color: var(--color-text-primary);
   }
 
-  .project-links svg {
-    width: 22px;
-    height: 22px;
-    fill: currentColor;
-  }
-
-  @media (max-width: 1080px) {
-    .big-project-container {
-      gap: 3rem;
-    }
+  .bp-link svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
   }
 
   @media (max-width: 768px) {
-    .big-project-container {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      padding: 1rem 0;
-    }
-
-    .big-project-container.reverse {
-      direction: ltr;
-    }
-
-    .project-image {
+    .bp-content {
       padding: 1.5rem;
-    }
-
-    .project-title {
-      font-size: 1.75rem;
-    }
-
-    .project-description p {
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .project-tech-list {
-      gap: 0 10px;
-    }
-
-    .project-tech-list li {
-      font-size: 0.75rem;
     }
   }
 </style>

@@ -54,7 +54,7 @@ const frontendCount = projects.filter((p) => p.category === 'frontend').length;
 
   .tab {
     padding: 0.5rem 1.25rem;
-    border: 1px solid #c1c1c153;
+    border: 1px solid var(--color-border);
     background: transparent;
     border-radius: 9999px;
     font-size: 0.95rem;
@@ -63,19 +63,19 @@ const frontendCount = projects.filter((p) => p.category === 'frontend').length;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #666;
+    color: var(--color-text-secondary);
     font-family: inherit;
   }
 
   .tab:hover {
-    border-color: #000;
-    color: #000;
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
   }
 
   .tab[aria-pressed='true'] {
-    background: #000;
+    background: var(--color-text-primary);
     color: white;
-    border-color: #000;
+    border-color: var(--color-text-primary);
   }
 
   .tab .count {

@@ -10,14 +10,15 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<div class="archive-wrapper">
-  <button class="archive-toggle" aria-expanded="false" aria-controls="archive-table">
-    <span class="toggle-text">Show Archive</span>
-    <span class="toggle-icon">▼</span>
+<div class="ar-wrapper">
+
+  <button class="ar-toggle" aria-expanded="false" aria-controls="ar-table">
+    <span class="ar-text">Show Archive</span>
+    <span class="ar-arrow" aria-hidden="true">→</span>
   </button>
 
-  <div class="archive-table-wrapper" id="archive-table" hidden>
-    <table class="archive-table">
+  <div class="ar-table-wrapper" id="ar-table" hidden>
+    <table class="ar-table">
       <thead>
         <tr>
           <th>Project</th>
@@ -29,15 +30,16 @@ const { projects } = Astro.props;
         {
           projects.map((project) => (
             <tr>
-              <td class="project-name">{project.name}</td>
-              <td class="project-tech">
+              <td class="ar-name">{project.name}</td>
+              <td class="ar-tech">
                 {project.technologies.map((tech, i) => (
                   <span>
-                    {tech}{i < project.technologies.length - 1 ? ' · ' : ''}
+                    {tech}
+                    {i < project.technologies.length - 1 ? ' · ' : ''}
                   </span>
                 ))}
               </td>
-              <td class="project-links">
+              <td class="ar-links">
                 {project.github && project.github !== '#' && (
                   <a
                     href={project.github}
@@ -65,132 +67,151 @@ const { projects } = Astro.props;
       </tbody>
     </table>
   </div>
+
 </div>
 
 <script>
-  const toggle = document.querySelector('.archive-toggle');
-  const table = document.querySelector('#archive-table');
+  const toggle = document.querySelector('.ar-toggle');
+  const table  = document.querySelector('#ar-table');
 
   toggle?.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!isExpanded));
     table?.toggleAttribute('hidden');
-    const text = toggle.querySelector('.toggle-text');
-    const icon = toggle.querySelector('.toggle-icon');
-    if (text) text.textContent = isExpanded ? 'Show Archive' : 'Hide Archive';
-    if (icon) icon.textContent = isExpanded ? '▼' : '▲';
+
+    const text  = toggle.querySelector('.ar-text');
+    const arrow = toggle.querySelector('.ar-arrow');
+    if (text)  text.textContent  = isExpanded ? 'Show Archive' : 'Hide Archive';
+    if (arrow) arrow.textContent = isExpanded ? '→' : '↑';
   });
 </script>
 
-<style>
-  .archive-wrapper {
-    margin-top: 4rem;
+<style is:global>
+  .ar-wrapper {
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
   }
 
-  .archive-toggle {
-    display: flex;
+  /* ── Toggle button ── */
+  .ar-toggle {
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     background: none;
-    border: 1px solid #ccc;
-    padding: 0.5rem 1.5rem;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.9rem;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    color: #555;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2px;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
 
-  .archive-toggle:hover {
-    border-color: #111;
-    color: #111;
+  .ar-toggle:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-secondary);
   }
 
-  .toggle-icon {
-    font-size: 0.7rem;
+  .ar-arrow {
+    transition: transform 0.2s ease;
+    display: inline-block;
   }
 
-  .archive-table-wrapper {
+  .ar-toggle[aria-expanded='true'] .ar-arrow {
+    transform: rotate(-90deg);
+  }
+
+  /* ── Table ── */
+  .ar-table-wrapper {
     width: 100%;
     overflow-x: auto;
   }
 
-  .archive-table {
+  .ar-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.95rem;
   }
 
-  .archive-table thead th {
+  .ar-table thead th {
     text-align: left;
-    padding: 0.5rem 1rem;
-    font-family: monospace;
-    font-size: 0.8rem;
-    color: #999;
-    border-bottom: 1px solid #eee;
-    font-weight: 500;
+    padding: 0.5rem 1rem 0.5rem 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border);
+    font-weight: 400;
   }
 
-  .archive-table tbody tr {
-    border-bottom: 1px solid #f0f0f0;
+  .ar-table tbody tr {
+    border-bottom: 1px solid var(--color-border-light);
     transition: background-color 0.15s ease;
   }
 
-  .archive-table tbody tr:hover {
-    background-color: #fafafa;
+  .ar-table tbody tr:hover {
+    background-color: var(--color-card);
   }
 
-  .archive-table td {
-    padding: 0.75rem 1rem;
+  .ar-table td {
+    padding: 0.75rem 1rem 0.75rem 0;
     vertical-align: middle;
   }
 
-  .project-name {
+  .ar-name {
+    font-size: var(--text-sm);
     font-weight: 600;
-    color: #111;
+    color: var(--color-text-primary);
     white-space: nowrap;
   }
 
-  .project-tech {
-    color: #666;
-    font-family: monospace;
-    font-size: 0.85rem;
+  .ar-tech {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.03em;
   }
 
-  .project-links {
+  .ar-links {
     display: flex;
     gap: 0.75rem;
     align-items: center;
   }
 
-  .project-links a {
-    color: #888;
+  .ar-links a,
+  .ar-links a:link,
+  .ar-links a:visited {
+    color: var(--color-text-muted);
     display: flex;
     align-items: center;
+    text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .project-links a:hover {
-    color: #111;
+  .ar-links a:hover {
+    color: var(--color-text-primary);
   }
 
-  .project-links svg {
-    width: 18px;
-    height: 18px;
+  .ar-links svg {
+    width: 16px;
+    height: 16px;
     stroke: currentColor;
     fill: none;
   }
 
   @media (max-width: 768px) {
-    .archive-table thead th:nth-child(2) {
-      display: none;
-    }
-    .archive-table td:nth-child(2) {
+    .ar-table thead th:nth-child(2),
+    .ar-table td:nth-child(2) {
       display: none;
     }
   }

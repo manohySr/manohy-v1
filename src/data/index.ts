@@ -1,7 +1,38 @@
-import type { Project, Technology } from '../types';
+import type { Project, Technology, Expertise } from '../types';
 import ukikiuleImg from '../images/ukikiule.png';
 import catWikiImg from '../images/Cat-wiki.png';
 import cvValidatorImg from '../images/CV-validator.png';
+
+export const expertise: Expertise[] = [
+  {
+    title: 'Web Development',
+    description:
+      'I build web products end-to-end — from responsive interfaces to robust backend APIs.',
+    items: [
+      'Frontend Development',
+      'Backend Development',
+      'Responsive Design',
+      'Mobile Apps',
+    ],
+  },
+  {
+    title: 'Languages & Tools',
+    description:
+      'I work across multiple languages and toolchains depending on what the project needs.',
+    items: [
+      'JavaScript / TypeScript',
+      'Go, Python, Node.js',
+      'SQL, Linux, Docker',
+      'Git, GitHub Actions',
+    ],
+  },
+  {
+    title: 'AI Integration',
+    description:
+      'I build AI-powered products using modern LLM pipelines and cloud infrastructure.',
+    items: ['RAG Pipelines', 'LLMs', 'FastAPI'],
+  },
+];
 
 export const siteConfig = {
   cvUrl:
