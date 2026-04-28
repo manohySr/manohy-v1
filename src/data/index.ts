@@ -1,11 +1,18 @@
 import type { Project, Technology } from '../types';
 import ukikiuleImg from '../images/ukikiule.png';
+import catWikiImg from '../images/Cat-wiki.png';
+import cvValidatorImg from '../images/CV-validator.png';
+
+export const siteConfig = {
+  cvUrl:
+    'https://docs.google.com/document/d/1RkTDEQ8EhAQQkUfkkiZqO6bnaDDGcUQ2R3r4K1BH3pY/edit?usp=sharing',
+};
 
 export const bigProjects: Project[] = [
   {
     name: 'UKIKIULE',
     description:
-      'This project offers AI-powered summaries of Madagascar-related news by leveraging verified data sources, a Retrieval-Augmented Generation (RAG) pipeline for improved accuracy, and integrated voice recognition for hands-free interaction.',
+      'Madagascar has no centralized source for local news. UKIKIULE solves that by aggregating verified sources and running them through a RAG pipeline to generate accurate, hallucination-resistant summaries — with voice recognition for hands-free use.',
     technologies: [
       'NextJs',
       'Tailwind',
@@ -19,6 +26,23 @@ export const bigProjects: Project[] = [
     github: '#',
     live: 'https://ukikiule.surge.sh/',
     image: ukikiuleImg,
+  },
+  {
+    name: 'Cat Wiki Master',
+    description:
+      'A full-stack cat encyclopedia built to practice end-to-end Next.js 14 architecture. Features dynamic API routes, individual breed profiles with stats, a top 10 ranking system pulled from an external API, and a MongoDB layer for persistence — deployed live on Vercel.',
+    technologies: ['Next.js 14', 'TypeScript', 'Tailwind', 'MongoDB'],
+    github: 'https://github.com/manohySr/cat-wiki-master',
+    live: 'https://cat-wiki-master-seven.vercel.app',
+    image: catWikiImg,
+  },
+  {
+    name: 'CV Validator',
+    description:
+      'A mobile-first tool that takes your generalist CV and a job description, then uses Google Gemini as AI to tailor the content to the role — cutting the time spent manually adapting applications. Built with React Native for cross-platform delivery and Python FastAPI as the AI backend.',
+    technologies: ['React Native', 'Python', 'FastAPI', 'GenAI', 'Gemini'],
+    github: '#',
+    image: cvValidatorImg,
   },
 ];
 
@@ -43,13 +67,13 @@ export const projects: Project[] = [
     category: 'fullstack',
   },
   {
-    name: 'Kotrana CSS Part 3',
+    name: 'Image Uploader',
     description:
-      'A CSS practice project with various stylesheets and SASS compilation techniques. Utilized SASS for better organization and modularity of styles. Demonstrates CSS prefixing, concatenation, and the use of SVG icons with Icomoon integration.',
-    technologies: ['HTML', 'CSS', 'Sass', 'SVG', 'BEM'],
-    github: 'https://github.com/manohySr/kotrana-css-part-3',
-    live: 'https://kotrana-part-3.netlify.app',
-    category: 'frontend',
+      'A fullstack image uploader application from DevChallenge. Built with React and Vite on the frontend, integrated with Cloudinary for image processing and storage. Features drag-and-drop upload, image preview, and shareable links.',
+    technologies: ['React', 'Vite', 'Cloudinary', 'Node.js'],
+    github: 'https://github.com/manohySr/image-uploader-front',
+    live: 'https://image-uploader-front-six.vercel.app',
+    category: 'fullstack',
   },
   {
     name: 'TMDB CLI Tool',
@@ -82,6 +106,15 @@ export const projects: Project[] = [
     technologies: ['Go', 'Go Cobra', 'Caching'],
     github: 'https://github.com/manohySr/caching-proxy',
     category: 'backend',
+  },
+  {
+    name: 'Kotrana CSS Part 3',
+    description:
+      'A CSS practice project with various stylesheets and SASS compilation techniques. Utilized SASS for better organization and modularity of styles. Demonstrates CSS prefixing, concatenation, and the use of SVG icons with Icomoon integration.',
+    technologies: ['HTML', 'CSS', 'Sass', 'SVG', 'BEM'],
+    github: 'https://github.com/manohySr/kotrana-css-part-3',
+    live: 'https://kotrana-part-3.netlify.app',
+    category: 'frontend',
   },
   {
     name: 'Snap Landing Page',
@@ -118,15 +151,6 @@ export const projects: Project[] = [
     github: 'https://github.com/manohySr/Front-end-mentor-part-1',
     live: 'https://front-end-mentor-part-1.netlify.app',
     category: 'frontend',
-  },
-  {
-    name: 'Image Uploader',
-    description:
-      'A fullstack image uploader application from DevChallenge. Built with React and Vite on the frontend, integrated with Cloudinary for image processing and storage. Features drag-and-drop upload, image preview, and shareable links.',
-    technologies: ['React', 'Vite', 'Cloudinary', 'Node.js'],
-    github: 'https://github.com/manohySr/image-uploader-front',
-    live: 'https://image-uploader-front-six.vercel.app',
-    category: 'fullstack',
   },
   {
     name: 'Pizza Order',
@@ -206,7 +230,7 @@ export const technologies: Technology[] = [
     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg?color',
   },
   {
-    name: 'Neovim',
+    name: 'Vim',
     category: 'Editor',
     icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/neovim.svg?color',
   },

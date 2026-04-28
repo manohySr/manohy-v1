@@ -1,5 +1,5 @@
 ---
-
+import { siteConfig } from '../data/index';
 ---
 
 <header class="header">
@@ -16,6 +16,10 @@
       <li><a href="#">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#featured-projects">Projects</a></li>
+      <li>
+        <a href={siteConfig.cvUrl} target="_blank" rel="noopener noreferrer"
+          >Resume</a>
+      </li>
       <li><a href="mailto:manohyrajaonah@gmail.com">Contact</a></li>
     </ul>
     <button class="close-menu" aria-label="Close menu">
@@ -100,6 +104,22 @@
 
   .nav-links a:hover {
     border-bottom: 1px solid black;
+  }
+
+  .resume-btn {
+    color: inherit;
+    border: 1px solid currentColor;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .nav-links a.resume-btn:hover {
+    background-color: #111;
+    color: white;
+    border-bottom: none;
   }
 
   .mobile-menu-toggle {

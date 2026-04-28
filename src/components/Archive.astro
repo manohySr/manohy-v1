@@ -1,0 +1,197 @@
+---
+import type { Project } from '../types';
+import github from './../assets/icons/github.svg?raw';
+import link from './../assets/icons/link.svg?raw';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="archive-wrapper">
+  <button class="archive-toggle" aria-expanded="false" aria-controls="archive-table">
+    <span class="toggle-text">Show Archive</span>
+    <span class="toggle-icon">▼</span>
+  </button>
+
+  <div class="archive-table-wrapper" id="archive-table" hidden>
+    <table class="archive-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Built with</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          projects.map((project) => (
+            <tr>
+              <td class="project-name">{project.name}</td>
+              <td class="project-tech">
+                {project.technologies.map((tech, i) => (
+                  <span>
+                    {tech}{i < project.technologies.length - 1 ? ' · ' : ''}
+                  </span>
+                ))}
+              </td>
+              <td class="project-links">
+                {project.github && project.github !== '#' && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.name} GitHub`}
+                  >
+                    <Fragment set:html={github} />
+                  </a>
+                )}
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.name} live site`}
+                  >
+                    <Fragment set:html={link} />
+                  </a>
+                )}
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector('.archive-toggle');
+  const table = document.querySelector('#archive-table');
+
+  toggle?.addEventListener('click', () => {
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isExpanded));
+    table?.toggleAttribute('hidden');
+    const text = toggle.querySelector('.toggle-text');
+    const icon = toggle.querySelector('.toggle-icon');
+    if (text) text.textContent = isExpanded ? 'Show Archive' : 'Hide Archive';
+    if (icon) icon.textContent = isExpanded ? '▼' : '▲';
+  });
+</script>
+
+<style>
+  .archive-wrapper {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .archive-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #555;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .archive-toggle:hover {
+    border-color: #111;
+    color: #111;
+  }
+
+  .toggle-icon {
+    font-size: 0.7rem;
+  }
+
+  .archive-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .archive-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .archive-table thead th {
+    text-align: left;
+    padding: 0.5rem 1rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #999;
+    border-bottom: 1px solid #eee;
+    font-weight: 500;
+  }
+
+  .archive-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.15s ease;
+  }
+
+  .archive-table tbody tr:hover {
+    background-color: #fafafa;
+  }
+
+  .archive-table td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  .project-name {
+    font-weight: 600;
+    color: #111;
+    white-space: nowrap;
+  }
+
+  .project-tech {
+    color: #666;
+    font-family: monospace;
+    font-size: 0.85rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .project-links a {
+    color: #888;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  .project-links a:hover {
+    color: #111;
+  }
+
+  .project-links svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  @media (max-width: 768px) {
+    .archive-table thead th:nth-child(2) {
+      display: none;
+    }
+    .archive-table td:nth-child(2) {
+      display: none;
+    }
+  }
+</style>

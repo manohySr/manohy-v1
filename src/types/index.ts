@@ -8,6 +8,7 @@ export interface Project {
   live?: string;
   image?: string | any;
   category?: ProjectCategory;
+  isArchive?: boolean;
 }
 
 export interface Technology {

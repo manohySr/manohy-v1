@@ -1,9 +1,20 @@
 ---
 import github from './../assets/icons/github.svg?raw';
 import linkedin from './../assets/icons/linkedin.svg?raw';
+import cv from './../assets/icons/cv.svg?raw';
+import { siteConfig } from '../data/index';
 ---
 
 <div class="container">
+  <a
+    href={siteConfig.cvUrl}
+    class="glass-effect"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="View CV"
+  >
+    <Fragment set:html={cv} />
+  </a>
   <a
     href="https://www.github.com/manohysr"
     class="glass-effect"

@@ -2,25 +2,20 @@
 import Layout from '../layout/Layout.astro';
 import BigProject from './BigProject.astro';
 import Title from './Title.astro';
-import { bigProjects } from '../data';
-
+import Archive from './Archive.astro';
+import { bigProjects, projects } from '../data';
 ---
 
 <Layout class="mt-2">
-  {
-  bigProjects.length > 0 && (
-
-  <Title>__Featured Projects</Title>
-  <div class="big-projects-container" id="featured-projects">
-    {
-    bigProjects.map((project, index) => (
-    <BigProject project={project} index={index} />
-    ))
-    }
-  </div>
-
-  )
-}
+  {bigProjects.length > 0 && (
+    <Title>__Projects</Title>
+    <div class="big-projects-container" id="featured-projects">
+      {bigProjects.map((project, index) => (
+        <BigProject project={project} index={index} />
+      ))}
+    </div>
+    <Archive projects={projects} />
+  )}
 </Layout>
 
 <style>
