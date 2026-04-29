@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { project, index } = Astro.props;
-const { name, description, technologies, github, live, image } = project;
+const { name, description, descriptionFr, technologies, github, live, image } = project;
 const num = String(index + 1).padStart(2, '0');
 ---
 
@@ -39,7 +39,7 @@ const num = String(index + 1).padStart(2, '0');
     <div class="bp-header">
       <span class="bp-num">{num}</span>
       <span class="bp-sep" aria-hidden="true">·</span>
-      <span class="bp-overline">Featured Project</span>
+      <span class="bp-overline" data-i18n="projects.overline">Featured Project</span>
     </div>
 
     <h3 class="bp-title">
@@ -48,7 +48,10 @@ const num = String(index + 1).padStart(2, '0');
       </a>
     </h3>
 
-    <p class="bp-desc">{description}</p>
+    <p class="bp-desc">
+      <span data-lang="en">{description}</span>
+      <span data-lang="fr" style="display:none">{descriptionFr ?? description}</span>
+    </p>
 
     <ul class="bp-tech">
       {technologies.map((tech) => <li>{tech}</li>)}

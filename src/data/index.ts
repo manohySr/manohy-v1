@@ -6,8 +6,11 @@ import cvValidatorImg from '../images/CV-validator.png';
 export const expertise: Expertise[] = [
   {
     title: 'Web Development',
+    titleFr: 'Développement Web',
     description:
       'I build web products end-to-end — from responsive interfaces to robust backend APIs.',
+    descriptionFr:
+      'Je construis des produits web de bout en bout — des interfaces responsives aux APIs backend robustes.',
     items: [
       'Frontend Development',
       'Backend Development',
@@ -17,8 +20,11 @@ export const expertise: Expertise[] = [
   },
   {
     title: 'Languages & Tools',
+    titleFr: 'Langages & Outils',
     description:
       'I work across multiple languages and toolchains depending on what the project needs.',
+    descriptionFr:
+      "Je travaille avec plusieurs langages et chaînes d'outils selon les besoins du projet.",
     items: [
       'JavaScript / TypeScript',
       'Go, Python, Node.js',
@@ -28,8 +34,11 @@ export const expertise: Expertise[] = [
   },
   {
     title: 'AI Integration',
+    titleFr: 'Intégration IA',
     description:
       'I build AI-powered products using modern LLM pipelines and cloud infrastructure.',
+    descriptionFr:
+      "Je construis des produits propulsés par l'IA en utilisant des pipelines LLM modernes et une infrastructure cloud.",
     items: ['RAG Pipelines', 'LLMs', 'FastAPI'],
   },
 ];
@@ -44,6 +53,8 @@ export const bigProjects: Project[] = [
     name: 'UKIKIULE',
     description:
       'Madagascar has no centralized source for local news. UKIKIULE solves that by aggregating verified sources and running them through a RAG pipeline to generate accurate, hallucination-resistant summaries — with voice recognition for hands-free use.',
+    descriptionFr:
+      "Madagascar ne dispose d'aucune source centralisée pour les actualités locales. UKIKIULE résout cela en agrégeant des sources vérifiées et en les traitant via un pipeline RAG pour générer des résumés précis et résistants aux hallucinations — avec reconnaissance vocale pour une utilisation mains libres.",
     technologies: [
       'NextJs',
       'Tailwind',
@@ -62,6 +73,8 @@ export const bigProjects: Project[] = [
     name: 'Cat Wiki Master',
     description:
       'A full-stack cat encyclopedia built to practice end-to-end Next.js 14 architecture. Features dynamic API routes, individual breed profiles with stats, a top 10 ranking system pulled from an external API, and a MongoDB layer for persistence — deployed live on Vercel.',
+    descriptionFr:
+      "Une encyclopédie féline full-stack construite pour pratiquer l'architecture Next.js 14 de bout en bout. Comprend des routes API dynamiques, des profils de races individuels avec statistiques, un classement top 10 tiré d'une API externe, et une couche MongoDB pour la persistance — déployée sur Vercel.",
     technologies: ['Next.js 14', 'TypeScript', 'Tailwind', 'MongoDB'],
     github: 'https://github.com/manohySr/cat-wiki-master',
     live: 'https://cat-wiki-master-seven.vercel.app',
@@ -71,6 +84,8 @@ export const bigProjects: Project[] = [
     name: 'CV Validator',
     description:
       'A mobile-first tool that takes your generalist CV and a job description, then uses Google Gemini as AI to tailor the content to the role — cutting the time spent manually adapting applications. Built with React Native for cross-platform delivery and Python FastAPI as the AI backend.',
+    descriptionFr:
+      "Un outil mobile-first qui prend votre CV généraliste et une description de poste, puis utilise Google Gemini pour adapter le contenu au rôle — réduisant le temps passé à adapter manuellement les candidatures. Construit avec React Native pour une livraison multiplateforme et Python FastAPI comme backend IA.",
     technologies: ['React Native', 'Python', 'FastAPI', 'GenAI', 'Gemini'],
     github: '#',
     image: cvValidatorImg,

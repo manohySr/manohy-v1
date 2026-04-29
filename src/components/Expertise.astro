@@ -7,7 +7,7 @@ import { expertise } from '../data';
   <section class="ex-section" id="expertise">
 
     <div class="ex-meta">
-      <h2 class="ex-label">Expertise</h2>
+      <h2 class="ex-label" data-i18n="expertise.label">Expertise</h2>
       <span class="ex-num" aria-hidden="true">02</span>
     </div>
 
@@ -16,11 +16,11 @@ import { expertise } from '../data';
     <div class="ex-layout">
 
       <div class="ex-left">
-        <p class="ex-desc">
+        <p class="ex-desc" data-i18n="expertise.desc">
           I build web products end-to-end — turning ideas into real, working
           software. From responsive interfaces to AI-powered backends.
         </p>
-        <a href="#featured-projects" class="ex-link">
+        <a href="#featured-projects" class="ex-link" data-i18n="expertise.link">
           See my work →
         </a>
       </div>
@@ -30,8 +30,14 @@ import { expertise } from '../data';
           expertise.map((area, i) => (
             <div class="ex-card">
               <span class="ex-card-num">0{i + 1}</span>
-              <h3 class="ex-card-title">{area.title}</h3>
-              <p class="ex-card-desc">{area.description}</p>
+              <h3 class="ex-card-title">
+                <span data-lang="en">{area.title}</span>
+                <span data-lang="fr" style="display:none">{area.titleFr ?? area.title}</span>
+              </h3>
+              <p class="ex-card-desc">
+                <span data-lang="en">{area.description}</span>
+                <span data-lang="fr" style="display:none">{area.descriptionFr ?? area.description}</span>
+              </p>
               <ul class="ex-card-list">
                 {area.items.map((item) => (
                   <li>{item}</li>

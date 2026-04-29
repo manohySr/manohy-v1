@@ -2,12 +2,12 @@
 import { siteConfig } from '../data/index';
 
 const navItems = [
-  { label: 'Home',     href: '#home'              },
-  { label: 'Expertise', href: '#expertise'        },
-  { label: 'Projects', href: '#featured-projects' },
-  { label: 'About',    href: '#about'             },
-  { label: 'Resume',   href: siteConfig.cvUrl, external: true },
-  { label: 'Contact',  href: '#contact'           },
+  { label: 'Home',       href: '#home',              i18nKey: 'nav.home'      },
+  { label: 'Expertise',  href: '#expertise',         i18nKey: 'nav.expertise' },
+  { label: 'Projects',   href: '#featured-projects', i18nKey: 'nav.projects'  },
+  { label: 'About',      href: '#about',             i18nKey: 'nav.about'     },
+  { label: 'Resume ↗',   href: siteConfig.cvUrl, external: true, i18nKey: 'nav.resume'  },
+  { label: 'Contact',    href: '#contact',           i18nKey: 'nav.contact'   },
 ];
 ---
 
@@ -16,21 +16,23 @@ const navItems = [
 
   <ul class="hd-nav" role="list">
     {
-      navItems.map(({ label, href, external }) => (
+      navItems.map(({ label, href, external, i18nKey }) => (
         <li>
           <a
             href={href}
+            data-i18n={i18nKey}
             {...(external
               ? { target: '_blank', rel: 'noopener noreferrer' }
               : {})}
           >
             {label}
-            {external ? ' ↗' : ''}
           </a>
         </li>
       ))
     }
   </ul>
+
+  <button class="hd-lang" aria-label="Switch language">FR</button>
 
   <button class="hd-burger" aria-label="Open menu" aria-expanded="false">
     <span></span>
@@ -39,18 +41,15 @@ const navItems = [
 </header>
 
 <div class="hd-overlay" id="hd-overlay">
-  <button class="hd-overlay-close" aria-label="Close menu">
-    <span></span>
-    <span></span>
-  </button>
 
   <nav class="hd-overlay-nav">
     <ul role="list">
       {
-        navItems.map(({ label, href, external }, i) => (
+        navItems.map(({ label, href, external, i18nKey }, i) => (
           <li style={`--i: ${i}`}>
             <a
               href={href}
+              data-i18n={i18nKey}
               {...(external
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
@@ -68,7 +67,6 @@ const navItems = [
 <script type="module">
   const burger = document.querySelector('.hd-burger');
   const overlay = document.querySelector('#hd-overlay');
-  const closeBtn = document.querySelector('.hd-overlay-close');
   const overlayLinks = document.querySelectorAll('.hd-overlay-nav a');
 
   function openMenu() {
@@ -83,9 +81,19 @@ const navItems = [
     document.body.style.overflow = '';
   }
 
-  burger?.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
+  burger?.addEventListener('click', () => {
+    const isOpen = burger.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
   overlayLinks.forEach((link) => link.addEventListener('click', closeMenu));
+
+  // Language toggle
+  const langBtn = document.querySelector('.hd-lang');
+  langBtn?.addEventListener('click', () => {
+    const current = document.documentElement.lang || 'en';
+    const next = current === 'en' ? 'fr' : 'en';
+    window.__setLang?.(next);
+  });
 
   // Active section highlight
   const sections = document.querySelectorAll('section[id], footer[id]');
@@ -173,6 +181,26 @@ const navItems = [
     border-color: var(--color-text-primary);
   }
 
+  /* ── Lang toggle ── */
+  .hd-lang {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .hd-lang:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-muted);
+  }
+
   /* ── Burger ── */
   .hd-burger {
     display: none;
@@ -229,36 +257,6 @@ const navItems = [
 
   .hd-overlay.is-open {
     transform: translateX(0);
-  }
-
-  /* Close button — X icon */
-  .hd-overlay-close {
-    position: absolute;
-    top: 1.25rem;
-    right: 2.5rem;
-    width: 30px;
-    height: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  .hd-overlay-close span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 22px;
-    height: 1.5px;
-    background: var(--color-text-primary);
-  }
-
-  .hd-overlay-close span:nth-child(1) {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  .hd-overlay-close span:nth-child(2) {
-    transform: translate(-50%, -50%) rotate(-45deg);
   }
 
   /* ── Overlay nav ── */

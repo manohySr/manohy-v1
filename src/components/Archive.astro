@@ -13,7 +13,7 @@ const { projects } = Astro.props;
 <div class="ar-wrapper">
 
   <button class="ar-toggle" aria-expanded="false" aria-controls="ar-table">
-    <span class="ar-text">Show Archive</span>
+    <span class="ar-text" data-i18n="archive.show">Show Archive</span>
     <span class="ar-arrow" aria-hidden="true">→</span>
   </button>
 
@@ -21,9 +21,9 @@ const { projects } = Astro.props;
     <table class="ar-table">
       <thead>
         <tr>
-          <th>Project</th>
-          <th>Built with</th>
-          <th>Links</th>
+          <th data-i18n="archive.col.project">Project</th>
+          <th data-i18n="archive.col.built">Built with</th>
+          <th data-i18n="archive.col.links">Links</th>
         </tr>
       </thead>
       <tbody>
@@ -74,6 +74,11 @@ const { projects } = Astro.props;
   const toggle = document.querySelector('.ar-toggle');
   const table  = document.querySelector('#ar-table');
 
+  const archiveLabels: Record<string, Record<string, string>> = {
+    en: { show: 'Show Archive', hide: 'Hide Archive' },
+    fr: { show: "Voir l'archive", hide: "Masquer l'archive" },
+  };
+
   toggle?.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!isExpanded));
@@ -81,7 +86,12 @@ const { projects } = Astro.props;
 
     const text  = toggle.querySelector('.ar-text');
     const arrow = toggle.querySelector('.ar-arrow');
-    if (text)  text.textContent  = isExpanded ? 'Show Archive' : 'Hide Archive';
+    if (text) {
+      const lang = document.documentElement.lang || 'en';
+      const newKey = isExpanded ? 'show' : 'hide';
+      text.setAttribute('data-i18n', isExpanded ? 'archive.show' : 'archive.hide');
+      text.textContent = archiveLabels[lang]?.[newKey] ?? text.textContent;
+    }
     if (arrow) arrow.textContent = isExpanded ? '→' : '↑';
   });
 </script>

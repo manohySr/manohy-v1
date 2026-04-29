@@ -8,7 +8,7 @@ import { technologies } from '../data';
 <Layout>
   <section class="ab-section" id="about">
     <div class="ab-meta">
-      <h2 class="ab-label">About</h2>
+      <h2 class="ab-label" data-i18n="about.label">About</h2>
       <span class="ab-num" aria-hidden="true">04</span>
     </div>
 
@@ -17,37 +17,49 @@ import { technologies } from '../data';
     <div class="ab-layout">
       <div class="ab-left">
         <div class="ab-bio">
-          <p>Hey — I’m Manohy.</p>
-          <p>
+          <p data-i18n="about.p1">Hey — I’m Manohy.</p>
+          <p data-i18n="about.p2">
             I’m a software engineer who enjoys turning ideas into systems people
             can actually use. What draws me to engineering isn’t just building
             features, but understanding how things work underneath — and how to
             make them simpler, faster, and more reliable.
           </p>
           <p>
-            I got into development in 2022 during a
-            <a
-              href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Malagasy Inter-university Hackathon @HEI (ESPA)
-            </a>, where I worked on the UI side with React. That experience
-            shaped how I approach building — taking ideas from concept to a
-            working product under real constraints.
+            <span data-lang="en">
+              I got into development in 2022 during a
+              <a
+                href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Malagasy Inter-university Hackathon @HEI (ESPA)</a>,
+              where I worked on the UI side with React. That experience
+              shaped how I approach building — taking ideas from concept to a
+              working product under real constraints.
+            </span>
+            <span data-lang="fr" style="display:none">
+              J’ai commencé le développement en 2022 lors d’un
+              <a
+                href="https://www.facebook.com/Techzara/photos/a.152154345343592/1100115003880850/?type=3&app=fbl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Hackathon Inter-universitaire Malgache @HEI (ESPA)</a>,
+              où j’ai travaillé sur l’interface avec React. Cette expérience
+              a façonné ma façon d’aborder la construction — transformer des
+              idées en produit fonctionnel sous de vraies contraintes.
+            </span>
           </p>
-          <p>
+          <p data-i18n="about.p4">
             Since then, I’ve grown into a full-stack developer with a background
             in Telecommunication Engineering, working across the stack while
             paying close attention to structure, performance, and
             maintainability.
           </p>
-          <p>
+          <p data-i18n="about.p5">
             Lately, I’ve been exploring AI and Machine Learning — not just out
             of curiosity, but to understand how these systems can be integrated
             into real-world applications in a meaningful way.
           </p>
-          <p>
+          <p data-i18n="about.p6">
             I tend to approach problems by breaking them down, questioning
             assumptions, and iterating quickly. I value clarity over complexity,
             and I care about building things that last.

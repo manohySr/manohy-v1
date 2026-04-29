@@ -90,6 +90,34 @@ const seo = {
     <Footer />
   </body>
   <script>
+    import { translations } from '../i18n/translations';
+    import type { Lang } from '../i18n/translations';
+
+    function setLang(lang: Lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+
+      document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n')!;
+        const value = translations[lang]?.[key];
+        if (value !== undefined) el.textContent = value;
+      });
+
+      document.querySelectorAll<HTMLElement>('[data-lang]').forEach((el) => {
+        el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+      });
+
+      const langBtn = document.querySelector<HTMLElement>('.hd-lang');
+      if (langBtn) langBtn.textContent = lang === 'en' ? 'FR' : 'EN';
+    }
+
+    (window as any).__setLang = setLang;
+
+    const saved = (localStorage.getItem('lang') || 'en') as Lang;
+    if (saved !== 'en') setLang(saved);
+  </script>
+
+  <script>
     window.addEventListener('load', () => {
       const loader = document.getElementById('loader');
       const mainContent = document.querySelector('.main-content');
