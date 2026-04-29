@@ -186,19 +186,19 @@ const navItems = [
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.08em;
-    color: var(--color-text-muted);
-    background: none;
-    border: 1px solid var(--color-border);
+    background: var(--color-text-primary);
+    color: var(--color-bg);
+    border: 1px solid var(--color-text-primary);
     padding: 0.2rem 0.5rem;
     cursor: pointer;
     transition:
-      color 0.2s ease,
-      border-color 0.2s ease;
+      background 0.2s ease,
+      color 0.2s ease;
   }
 
   .hd-lang:hover {
+    background: transparent;
     color: var(--color-text-primary);
-    border-color: var(--color-text-muted);
   }
 
   /* ── Burger ── */
