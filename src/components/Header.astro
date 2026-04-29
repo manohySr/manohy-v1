@@ -2,12 +2,12 @@
 import { siteConfig } from '../data/index';
 
 const navItems = [
-  { label: 'Home', href: '#' },
-  { label: 'Expertise', href: '#expertise' },
+  { label: 'Home',     href: '#home'              },
+  { label: 'Expertise', href: '#expertise'        },
   { label: 'Projects', href: '#featured-projects' },
-  { label: 'About', href: '#about' },
-  { label: 'Resume', href: siteConfig.cvUrl, external: true },
-  { label: 'Contact', href: 'mailto:manohyrajaonah@gmail.com', external: true },
+  { label: 'About',    href: '#about'             },
+  { label: 'Resume',   href: siteConfig.cvUrl, external: true },
+  { label: 'Contact',  href: '#contact'           },
 ];
 ---
 
@@ -86,6 +86,25 @@ const navItems = [
   burger?.addEventListener('click', openMenu);
   closeBtn?.addEventListener('click', closeMenu);
   overlayLinks.forEach((link) => link.addEventListener('click', closeMenu));
+
+  // Active section highlight
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const desktopLinks = document.querySelectorAll('.hd-nav a[href^="#"]');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        desktopLinks.forEach((link) => {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === `#${entry.target.id}`) {
+            link.classList.add('is-active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach((s) => sectionObserver.observe(s));
 </script>
 
 <style is:global>
@@ -145,6 +164,13 @@ const navItems = [
   .hd-nav a:hover {
     color: var(--color-text-primary);
     border-color: var(--color-text-muted);
+  }
+
+  .hd-nav a.is-active,
+  .hd-nav a.is-active:link,
+  .hd-nav a.is-active:visited {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
   }
 
   /* ── Burger ── */
