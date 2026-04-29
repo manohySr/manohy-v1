@@ -1,0 +1,255 @@
+---
+import github   from './../assets/icons/github.svg?raw';
+import linkedin from './../assets/icons/linkedin.svg?raw';
+import mail     from './../assets/icons/mail.svg?raw';
+---
+
+<footer class="ft-section">
+  <div class="ft-inner">
+
+    <!-- Meta row — mirrors every other section -->
+    <div class="ft-meta">
+      <span class="ft-label">Get in touch</span>
+      <span class="ft-num" aria-hidden="true">05</span>
+    </div>
+
+    <div class="ft-rule" aria-hidden="true"></div>
+
+    <!-- Big CTA headline -->
+    <div class="ft-headline">
+      <p class="ft-sub">Open to new opportunities — let's talk.</p>
+      <h2 class="ft-cta">Let's work<br/>together.</h2>
+    </div>
+
+    <!-- Email link -->
+    <a
+      href="mailto:manohyrajaonah@gmail.com"
+      class="ft-email"
+      aria-label="Send email"
+    >
+      manohyrajaonah@gmail.com
+      <span class="ft-email-arrow" aria-hidden="true">↗</span>
+    </a>
+
+    <!-- Bottom bar -->
+    <div class="ft-bottom">
+      <span class="ft-copy">© 2026 Manohy RAJAONAH</span>
+
+      <div class="ft-social">
+        <a
+          href="https://github.com/manohySr"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          class="ft-icon"
+        >
+          <Fragment set:html={github} />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/manohy-saotra-rajaonah/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          class="ft-icon"
+        >
+          <Fragment set:html={linkedin} />
+        </a>
+        <a
+          href="mailto:manohyrajaonah@gmail.com"
+          aria-label="Email"
+          class="ft-icon"
+        >
+          <Fragment set:html={mail} />
+        </a>
+      </div>
+
+      <a href="#" class="ft-top-link">↑ Back to top</a>
+    </div>
+
+  </div>
+</footer>
+
+<style is:global>
+  .ft-section {
+    --color-text-primary: #f0f0f0;
+    --color-text-muted:   #444;
+    --color-border:       #1e1e1e;
+    --color-card:         #111111;
+    background: #111;
+    padding: 6rem 0 3rem;
+  }
+
+  .ft-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  /* ── Meta row ── */
+  .ft-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .ft-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    font-weight: 400;
+  }
+
+  .ft-num {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-primary);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Rule ── */
+  .ft-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+    margin-bottom: 5rem;
+  }
+
+  /* ── Headline ── */
+  .ft-headline {
+    margin-bottom: 3rem;
+  }
+
+  .ft-sub {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    margin: 0 0 1.5rem;
+  }
+
+  .ft-cta {
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  /* ── Email link ── */
+  .ft-email,
+  .ft-email:link,
+  .ft-email:visited {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-text-muted);
+    padding-bottom: 2px;
+    margin-bottom: 6rem;
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .ft-email:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-text-primary);
+  }
+
+  .ft-email-arrow {
+    font-size: var(--text-base);
+    transition: transform 0.25s ease;
+  }
+
+  .ft-email:hover .ft-email-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* ── Bottom bar ── */
+  .ft-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .ft-copy {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-primary);
+    letter-spacing: 0.05em;
+  }
+
+  .ft-social {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .ft-icon,
+  .ft-icon:link,
+  .ft-icon:visited {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .ft-icon:hover {
+    color: var(--color-text-primary);
+  }
+
+  .ft-icon svg {
+    width: 17px;
+    height: 17px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  .ft-top-link,
+  .ft-top-link:link,
+  .ft-top-link:visited {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .ft-top-link:hover {
+    color: var(--color-text-primary);
+    border-color: #555;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .ft-inner {
+      padding: 0 1.5rem;
+    }
+
+    .ft-email {
+      font-size: var(--text-base);
+      word-break: break-all;
+    }
+
+    .ft-bottom {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+</style>
